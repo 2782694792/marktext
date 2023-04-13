@@ -1,0 +1,200 @@
+# 窗口类
+
+> 所有窗口类的基类：类 CWnd，封装了 Windows 窗口句柄 HWND。
+
+- 成员函数 DestroyWindow 可以消毁 Windows 窗口，而不需要消毁 CWnd 对象。
+
+## 数据成员
+
+`m_hWnd`
+
+- 与该 CWnd 对象相关联的 Windows 窗口句柄(HWND)；
+
+## 成员函数
+
+### 窗口大小和位置
+
+| GetWindowRgn       | **获得窗口的窗口区域的拷贝**           |
+| ------------------ | -------------------------- |
+| SetWindowRgn       | **设置窗口区域**                 |
+| IsIconic           | **判断窗口是否被最小化(图标化)**        |
+| IsZoomed           | **判断窗口是否被最大化**             |
+| GetWindowPlacement | **获得显示状态和窗口的正常、最小化和最大化位置** |
+| SetWindowPlacement | **设置显示状态和窗口的正常、最小化和最大化位置** |
+| BringWindowToTop   | **将 CWnd 对象放到覆盖窗口栈的顶部**    |
+| GetWindowRect      | **获得 CWnd 对象的屏幕坐标**        |
+| GetClientRect      | **获得 CWnd 对象客户区的度量**       |
+
+### 窗口访问
+
+| ChildWindowFromPoint     | 判断包含指定点的子窗口                |
+| ------------------------ | -------------------------- |
+| FindWindow               | 返回由其窗口名称和窗口类标识的窗口的句柄       |
+| GetNextWindow            | 返回窗口管理器列表中的下一个(或上一个)窗口     |
+| GetOwner                 | 返回指向 CWnd 对象的所有者的指针        |
+| SetOwner                 | 改变 CWnd 对象的所有者             |
+| GetTopWindow             | 返回属于 CWnd 对象的第一个子窗口        |
+| GetWindow                | 返回与当前窗口有指定关系的窗口            |
+| GetLastActivePopup       | 判断由 CWnd 对象所有的弹出窗口中最近激活的窗口 |
+| IsChild                  | 判断 CWnd 对象是否为一个子窗口         |
+| GetParent                | 如果存在的话，获得 CWnd 对象的父窗口      |
+| SetParent                | 改变父窗口                      |
+| WindowFromPoint          | 标识包括给定点的窗口                 |
+| GetDlgItem               | 从指定的对话框获得标准符为指定 ID 的控件     |
+| SendMessageToDescendants | 发送一条消息到窗口的所有下级窗口           |
+| UpdateDialogControls     | 用来更新对话框按钮或其它控件的状态          |
+| CenterWindow             | 相对于父窗口使窗口居中                |
+
+### 更新和绘制
+
+| Print           | 在指定的设备上下文绘制当前窗口                  |
+| --------------- | -------------------------------- |
+| PrintClient     | 在指定的设备上下文(通常是打印机)绘制所有窗口          |
+| GetDC           | 获得客户区的显示上下文                      |
+| GetDCEx         | 获得客户区的显示上下文，并在绘制过程中允许裁剪          |
+| RedrawWindow    | 在客户区中更新指定的矩形或区域                  |
+| GetWindowDC     | 获得整个窗口的显示上下文，包括标题条，菜单和滚动条        |
+| ReleaseDC       | 释放客户区或窗口设备上下文，并使其可为其它程序所使用       |
+| GetUpdateRect   | 获得完全覆盖 CWnd 对象的更新区域的最小矩形坐标       |
+| GetUpdateRgn    | 获得 CWnd 对象的更新区域                  |
+| InvalidateRect  | 通过将给定矩形添加到当前更新区域来使包括在给定矩形内的客户区无效 |
+| ShowOwnedPopups | 显示或隐藏窗口拥有的所有弹出式窗口                |
+| EnableScrollBar | 允许或禁止滚动条上的一个或两个箭头                |
+
+### 坐标映射
+
+| MapWindowPoints | 从 CWnd 对象的坐标空间映射一系列点到另一窗口的坐标空间 |
+| --------------- | ------------------------------ |
+| ClientToScreen  | 转换给定点的客户坐标或显示矩形到屏幕坐标           |
+| ScreenToClient  | 转换给定点的屏幕坐标或显示矩形到客户坐标           |
+
+### 滚动 Scroll
+
+| GetScrollPos     | 获得滚动框的当前位置                            |
+| ---------------- | ------------------------------------- |
+| ScrollWindow     | 滚动客户区的内容                              |
+| ScrollWindowEx   | 滚动客户区内容。与 ScrollWindowEx 类似，但具有一些附加特性 |
+| GetScrollInfo    | 获得关于某一滚动条的由 SCROLLINFO 结构维护的信息        |
+| SetScrollInfo    | 设置关于滚动条的信息                            |
+| SetScrollPos     | 设置滚动条的当前位置，并在指定的情况下重绘滚动条以反映新的位置       |
+| GetScrollBarCtrl | 返回兄弟滚动条控件                             |
+| RepositionBars   | 在客户区中对控件条重定位                          |
+
+### 拖放 Drag
+
+| DragAcceptFiles | 使窗口可以接受文件拖放 |
+| --------------- | ----------- |
+
+### 插入符 Caret
+
+| CreateCaret      | 新的插入符形状，并获得该插入符的所有权      |
+| ---------------- | ------------------------ |
+| CreateSolidCaret | 创建方块形状的插入符，并获得该插入符的所有权   |
+| CreateGrayCaret  | 创建变灰方块形状的插入符，并获得该插入符的所有权 |
+| GetCaretPos      | 获得插入符当前位置的客户坐标           |
+| SetCaretPos      | 移动插入符到指定的位置              |
+| HideCaret        | 隐藏插入符                    |
+| ShowCaret        | 在插入符的当前位置显示插入符           |
+
+### 对话框项
+
+| CheckDlgButton       | 在按钮控件前放置选中标记或清除按钮控件的选中标记                          |
+| -------------------- | ------------------------------------------------- |
+| CheckRadioButton     | 选中指定单选钮并清除指定给中其它所有单选钮的选中标记                        |
+| DlgDirList           | 使用文件或目录列表填充一列表框                                   |
+| DlgDirListComboBox   | 使用文件或目录列表填充一**组合框**的列表框                           |
+| DlgDirSelect         | 从一列表框中获得当前选择                                      |
+| DlgDirSelectComboBox | 从一**组合框**的列表框中获得当前选择                              |
+| GetDlgItemInt        | 将给定对话框中某一控件的文本**转换为一个整数值**                        |
+| GetDlgItemText       | 获得与某一控件相关联的标题或文本                                  |
+| GetNextDlgGroupItem  | 查找**同一组中的下一个或前一个**控件                              |
+| GetNextDlgTabItem    | 查找在指定控件之前(之后)的第一个**具有 WS_TABSTOP 样式的控件**          |
+| IsDialogMessage      | 判断一个给定消息是否影响非模态对话框，是则处理该消息                        |
+| SendDlgItemMessage   | 向指定的控件发送一条消息                                      |
+| SubclassDlgItem      | 将一个 Windows 控件与 CWnd 对象相关联，并使其通过 CWnd 对象的消息映射传递消息 |
+| ExecuteDlgInit       | 初始化对话框资源                                          |
+| RunModalLoop         | 为一模态窗口获取、翻译或发送消息                                  |
+| ContinueModal        | 使一窗口继续保持模态                                        |
+| EndModalLoop         | 结束某一窗口的模态状态                                       |
+
+### 数据绑定
+
+| BindDefaultProperty | 将调用对象的默认简单绑定属性(该属性在类型库中标记)绑定至相关联的数据源控件的游标  |
+| ------------------- | ------------------------------------------ |
+| BindProperty        | 将数据绑定控件的游标绑定属性绑定至数据源控件，并使用 MFC 绑定管理器注册绑定关系 |
+| GetDSCCursor        | 获得指向由数据源控件的数据源、用户名、密码和 SQL 属性定义的底层游标的指针    |
+
+### 菜单 Menu
+
+| GetMenu        | 获得指向指定菜单的指针          |
+| -------------- | -------------------- |
+| SetMenu        | 设置菜单为指定的菜单           |
+| DrawMenuBar    | 重绘菜单条                |
+| GetSystemMenu  | 允许应用程序访问控制菜单以进行复制和修改 |
+| HiliteMenuItem | 加亮顶层菜单项或移去顶层菜单项的加亮显示 |
+
+### 工具提示
+
+| EnableToolTip        | 允许工具提示控件                     |
+| -------------------- | ---------------------------- |
+| CancelToolTip        | 禁止工具提示控件                     |
+| FilterToolTipMessage | 获得对话框中与某一控件相关联的标题或文本         |
+| OnToolHitTest        | 判断一个点是否在指定工具的绑定矩形内，并获得该工具的信息 |
+
+### 计时器
+
+| SetTimer  | 安装系统计时器，计时器触发时发送 WM_TIMER 消息 |
+| --------- | ---------------------------- |
+| KillTimer | 消除系统计时器                      |
+
+### 窗口提示
+
+| FlashWindow | 闪烁窗口一次 |
+| ----------- | ------ |
+
+### 窗口消息
+
+- `WM_XXX`
+
+- (Window Message)一般与窗口的内部运作有关，如：创建、绘制和销毁窗口等；
+
+- 通常，消息是从系统发送到窗口，或从窗口发送到窗口；
+
+- 消息处理函数几乎都具有一致的命名方式，其格式为前缀 On 再加上相应的消息名。
+
+| GetCurrentMessage   | 返回窗口正在处理的消息的指针。仅当在一个 OnMessage 消息处理函数中调用该成员函数。                     |
+| ------------------- | ------------------------------------------------------------------ |
+| Default             | 调用默认窗口过程，该过程提供对所有应用程序未处理的消息的默认处理                                   |
+| PreTranslateMessage | 由 CWinApp 使用，在窗口消息被发送到 TranslateMessage 和 DispatchMessage 之前对其进行过滤 |
+| SendMessage         | 将一条消息发送到 CWnd 对象，直至该对象处理该消息之后才返回                                   |
+| PostMessage         | 将一条消息放入程序的消息队列，不等待窗口处理该消息就立即返回                                     |
+| SendNotifyMessage   | 将指定消息发送到窗口，并尽可能快的返回，这依赖于调用线程如何创建窗口                                 |
+
+### 剪贴板 Clipboard
+
+| ChangeClipboardChain   | 从剪贴板查看器链中移去 CWnd 对象                                |
+| ---------------------- | -------------------------------------------------- |
+| SetClipboardViewer     | 添到 CWnd 对象到窗口链，这些窗口当剪贴板内容改变时会收到通知                  |
+| OpenClipboard          | 打开剪贴板。其它程序仅当 Windows CloseClipboard 函数被调用时才可以更改剪贴板 |
+| GetClipboardOwner      | 获得剪贴板的当前拥有者的指针                                     |
+| GetOpenClipboardWindow | 获得指向当前打开剪贴板的窗口的指针                                  |
+| GetClipboardViewer     | 获得指向剪贴板查看器链中第一个窗口的指针                               |
+
+### OLE 控件
+
+| SetProperty       | 设置 OLE 控件属性       |
+| ----------------- | ----------------- |
+| OnAmbientProperty | 实现环境属性值           |
+| GetControlUnknown | 获得指向一未知 OLE 控件的指针 |
+| GetProperty       | 获得一 OLE 控件的属性     |
+| InvokeHelper      | 调用 OLE 控件方法或属性    |
+
+## 可重载函数
+
+| WindowProc     | 为 CWnd 对象提供一个窗口过程。默认的窗口过程通过消息映射发送消息 |
+| -------------- | ----------------------------------- |
+| DefWindowProc  | 调用默认窗口过程，该过程提供应用程序未处理的所有窗口消息的默认处理   |
+| PostNcDestroy  | 在窗口被消毁后由 OnNcDestroy 函数调用           |
+| OnNotify       | 由框架调用以通知父窗口某一事件在某一控件中发生或者该控件需要信息    |
+| OnChildNotify  | 由父窗口调用以给通知控件一个响应控件通知的机会             |
+| DoDataExchange | 用于对话框数据交换和验证。由 UpdateData 调用        |
