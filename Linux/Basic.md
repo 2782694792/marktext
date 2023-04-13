@@ -377,45 +377,77 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 
 - access time（atime）: 读取文件时就会更新。
 
-## 文件与目录的基本操作
+## 文件与目录操作
+
+常用命令
+
+- `ls`（list files）: 列出目录及文件名
+
+- `cd`（change directory）：切换目录
+
+- `pwd`（print work directory）：显示当前目录
+
+- `mkdir`（make directory）：创建一个新目录
+
+- `rmdir`（remove directory）：删除一个空目录
+
+- `cp`（copy file）: 复制文件或目录
+
+- `rm`（remove）: 删除文件或目录
+
+- `mv`（move file）: 移动文件与目录，或修改文件与目录名称
 
 ### 1. ls
 
 [列出当前工作文件或者目录的信息，目录的信息就是其中包含的文件]([Linux ls命令:显示指定工作目录下的内容 - Linux命令 - C语言网](https://www.dotcpp.com/course/655))
 
-```cs
-## ls [-aAdfFhilnrRSt] file | dir
--a : 列出全部文件
--d : 仅列出目录本身
--l : 以长数据串行列出，包含文件的属性与权限等数据
+```shell
+[root@www ~] ls [-aAdfFhilnrRSt] 目录名称
+[root@www ~] ls [--color={never,auto,always}] 目录名称
+[root@www ~] ls [--full-time] 目录名称
 ```
+
+- `-a` ：全部文件，连同隐藏文件一起列出来；
+
+- `-d` ：仅目录本身；
+
+- `-l` ：长数据串列出，包含文件属性与权限等数据。
 
 ### 2. cd
 
 [更换当前目录]([Linux cd命令:切换工作目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/657))
 
-```cs
-cd [相对路径或绝对路径]
+```shell
+# 绝对路径
+[root@www ~] cd /root/runoob/
+# 相对路径
+[root@www ~] cd ./runoob/
+# /root 目录
+[root@www runoob] cd ~
+# 上一级目录
+[root@www ~] cd ..
 ```
 
 ### 3. mkdir
 
 [创建目录]([Linux mkdir命令:创建目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/679))
 
-```cs
-## mkdir [-mp] 目录名称
--m : 配置目录权限
--p : 递归创建目录
+```shell
+mkdir [-mp] test1/test2/test3/test4
+
+[root@www tmp] mkdir -m 711 test2
 ```
+
+- `-m` ：配置文件的权限！直接配置；
+- `-p` ：包含上一级目录，递归创建。
 
 ### 4. rmdir
 
-删除目录，目录必须为空
-
-```cs
-## rkdir [-p] 目录名称
--p : 递归删除目录
+```shell
+ rmdir [-p] 目录名称
 ```
+
+- `-p` ：删除多级**空目录**。
 
 ### 5. touch
 
@@ -434,36 +466,61 @@ cd [相对路径或绝对路径]
 
 [复制文件，若源文件有两个以上，则目的文件一定要是目录才行]([Linux cp命令:复制文件或目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/687))
 
-```cs
+```shell
+[root@www ~] cp [-adfilprsu] 来源档(source) 目标档(destination)
+[root@www ~] cp [options] source1 source2 source3 .... directory
+
 ## cp [-adfilprsu] source destination
 -a : 相当于 -dr --preserve=all
--d : 若来源文件为链接文件，则复制链接文件属性而非文件本身
--i : 若目标文件已存在，则覆盖前会先询问
--p : 连同文件的属性一起复制过去
--r : 递归持续复制
--u : desition 比 source 旧才更新 desition，或 desition 不存在的情况下才复制
-
 --preserve=all : 除了 -p 的权限相关参数外，还加入 SELinux 的属性、links、xattr 等
+```
+
+- `-a` ：相当 **-pdr**；
+
+- `-d` ：若来源档为链接档(link file)，则复制链接档属性而非文件本身；
+
+- `-f` ：强制(force)，若目标文件已经存在且无法开启，则移除后再尝试一次；
+
+- `-i` ：若目标档(destination)已经存在时，覆盖时会先询问；
+
+- `-l` ：进行硬式链接(hard link)的链接档创建，而非复制文件本身；
+
+- `-p` ：同文件属性一起复制；
+
+- `-r` ：递归(recursion)复制；
+
+- `-s` ：复制成为符号链接档 (symbolic link)文件；
+
+- `-u` ：若 destination 比 source 旧才升级 destination。
+
+```cs
+
 ```
 
 ### 7. rm
 
-[删除某个目录及其下的所有文件及子目录，而对于链接文件，只是断开了链接，原文件内容保持不变]([Linux rm命令:删除文件或目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/683))
+[删除某个目录及其下的所有文件及子目录，而对于链接文件，只是断开了链接，原文件内容保持不变](https://www.dotcpp.com/course/683)
 
-```cs
-## rm [-fir] 文件或目录
--r : 递归删除
+```shell
+rm [-fir] 文件或目录
 ```
+
+- `-f` ：忽略不存在的文件，不会出现警告信息；
+- `-i` ：删除前会询问；
+- `-r` ：递归删除。
 
 ### 8. mv
 
 [将文件或目录改名，或移动文件]([Linux mv命令:移动或重命名文件或目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/690))
 
-```cs
-## mv [-fiu] source destination
-## mv [options] source1 source2 source3 .... directory
--f : force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖
+```shell
+[root@www ~] mv [-fiu] source destination
+[root@www ~] mv [options] source1 source2 source3 .... directory
 ```
+
+- `-f` ：不会询问而直接覆盖；
+- `-i` ：询问是否覆盖；
+- `-u` ：若目标文件已存在，且 source 比较新，才会升级 (update)。
 
 ## 修改权限
 
@@ -559,28 +616,74 @@ cd [相对路径或绝对路径]
 
 ### 1. cat
 
-[取得文件内容并输出到标准输出，同时还可以用于合并文件]([Linux cat命令:连接文件并打印到标准输出设备上 - Linux命令 - C语言网](https://www.dotcpp.com/course/681))
+[取得文件内容并输出到标准输出，同时还可以用于合并文件](https://www.dotcpp.com/course/681)
 
 ```cs
 ## cat [-AbEnTv] filename
--n : 打印出行号，连空白行也会有行号，但 -b 不会
 ```
+
+- `-A` ：-vET 的整合选项，可列出一些特殊字符而不是空白；
+
+- `-b` ：列出行号，仅针对非空白行做行号显示；
+
+- `-E` ：显示结尾的断行字节 $ ；
+
+- `-n` ：列印出行号，空白行也有；
+
+- `-T` ：将 [tab] 按键以 ^I 显示出来；
+
+- `-v` ：列出特殊字符。
 
 ### 2. tac
 
 是 cat 的反向操作，从最后一行开始打印
 
+```shell
+[root@www ~] tac /etc/issue
+
+Kernel \r on an \m
+CentOS release 6.4 (Final)
+```
+
 ### 3. more
 
-[和 cat 不同的是，它可以一页一页的查看文件内容，适合大文档的查看]([Linux more命令:显示文本文件内容 - Linux命令 - C语言网](https://www.dotcpp.com/course/680))
+[和 cat 不同的是，它可以一页一页的查看文件内容，适合大文档的查看](https://www.dotcpp.com/course/680)
+
+- `空白键 (space)` ：代表向下**翻一页**；
+
+- `Enter` ：代表向下**翻一行**；
+
+- `/字串` ：代表在这个显示的内容当中，向下搜寻『字串』关键字；
+
+- `:f` ：立刻显示出档名以及目前显示的行数；
+
+- `q` ：立刻离开；
+
+- `b 或 [ctrl]-b`  ：代表**往回翻页**，只对文件有用，对管线无用。
 
 ### 4. less
 
-[和 more 类似，但是多了一个向前翻页的功能，用于分页显示文件或其他输出]([Linux less命令:分页显示文件内容 - Linux命令 - C语言网](https://www.dotcpp.com/course/692))
+[和 more 类似，但是多了一个向前翻页的功能，用于分页显示文件或其他输出](https://www.dotcpp.com/course/692)
+
+- `空白键`    ：向下翻一页；
+
+- `[pagedown]` ：向下翻一页；
+
+- `[pageup]` ：向上翻一页；
+
+- `/字串` : 向下搜寻；
+
+- `?字串` ：向上搜寻；
+
+- `n` ：重复前一个搜寻 (与 / 或 ? 有关)；
+
+- `N` ：反向重复前一个搜寻 (与 / 或 ? 有关)；
+
+- `q` ：离开。
 
 ### 5. head
 
-[查看文件前几行]([Linux head命令:查看文件前几行 - Linux命令 - C语言网](https://www.dotcpp.com/course/693))
+[查看文件前几行](https://www.dotcpp.com/course/693)
 
 ```cs
 ## head [-n number] filename
@@ -589,8 +692,12 @@ cd [相对路径或绝对路径]
 
 ### 6. tail
 
-[head 的反向操作，查看文件后几行]([Linux tail命令:查看文件后几行 - Linux命令 - C语言网](https://www.dotcpp.com/course/694))
+[head 的反向操作，查看文件后几行](https://www.dotcpp.com/course/694)
 
 ### 7. od
 
 以字符或者十六进制的形式显示二进制文件
+
+- `-n` ：后接数字，代表显示几行；
+
+- `-f` ：表示持续侦测后面所接档名，要等到按下 [ctrl]-c 才结束 tail 侦测。
