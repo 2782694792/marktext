@@ -209,7 +209,7 @@ transform(v.begin(), v.end(), v2.begin(), logical_not<bool>());
 
 - 数值算法：对容器内容进行数值计算。
 
-## 2.2 常用遍历算法
+## 2.2 遍历
 
 ### 2.2.1 for_each
 
@@ -253,7 +253,7 @@ transform算法 将指定容器区间元素搬运到另一容器中
 transform(iterator beg1, iterator end1, iterator beg2, _callbakc);
 ```
 
-## 2.3 常用查找算法
+## 2.3 查找
 
 ### 2.3.1 find
 
@@ -342,7 +342,7 @@ count(beg, end, value);
 count_if(beg, end, _pred)
 ```
 
-## 2.4 常用排序算法
+## 2.4 排序
 
 `#include <algorithm>`
 
@@ -407,7 +407,7 @@ merge(beg1, end1, beg2, end2, iterator dest)
 reverse(beg, end)
 ```
 
-## 2.5 常用拷贝和替换函数
+## 2.5 拷贝和替换
 
     #include <algorithm>
 
@@ -468,7 +468,7 @@ sort(beg, end, _Pred， newvalue)
 swap(container c1, container c2)
 ```
 
-## 2.6 算术生成算法
+## 2.6 算术生成
 
 - #include <numeric>
 
@@ -502,7 +502,7 @@ accumulate(beg, end, value)
 fill(beg, end, value)
 ```
 
-## 2.7 常用的集合算法
+## 2.7 集合算法
 
 ### 2.7.1 set_intersection
 

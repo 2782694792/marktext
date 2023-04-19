@@ -169,7 +169,7 @@
 
 - #include<deque>    using namesace std;
 
-- 双端队列容器 ：<mark></mark>双向开口的连续线性空间；
+- 双端队列容器 ：双向开口的连续线性空间；
 
 - 擅长尾部和头部添加或删除元素：常数阶；
 
@@ -179,7 +179,7 @@
 
 - 是分段连续内存空间，有中央控制，维持整体连续的假象；
 
-- deque 最大的工作就是维护分段连续的内存空间的整体性的假象，并提供随机存取的接口，避开了重新配置空间、复制、释放的轮回，代价就是复杂的I迭代器架构；
+- deque 最大的工作就是维护分段连续的内存空间的整体性的假象，并提供随机存取的接口，避开了重新配置空间、复制、释放的轮回，代价就是复杂的迭代器架构；
 
 - [deque 接口函数介绍]([C++ deque get_allocator用法及代码示例 - 纯净天空](https://vimsky.com/examples/usage/deque-get_allocator-in-c-stl.html#:~:text=C%2B%2B%20deque%20get_allocator%E7%94%A8%E6%B3%95%E5%8F%8A%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B%20%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97,%3A%3Aget_allocator%20%28%29%20%E6%98%AFC%2B%2B%20STL%E4%B8%AD%E7%9A%84%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%8E%B7%E5%8F%96%E5%AE%B9%E5%99%A8%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97%E7%9A%84%E5%88%86%E9%85%8D%E5%99%A8%E3%80%82))。
 
