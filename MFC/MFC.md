@@ -1,6 +1,8 @@
-# 机制
+## 一、MFC
 
-## DDX 机制
+## 机制
+
+### DDX 机制
 
 - Dialog Data Exchange (DDX) **对话框数据交换**；
 
@@ -10,7 +12,7 @@
 DDX_Text(pDX, IDC_EDIT, m_strEdit); // 数据映射，进行双向关联
 ```
 
-## DDV 机制
+### DDV 机制
 
 - **对话框数据验证** (dialog data validation)；
 
@@ -20,9 +22,9 @@ DDX_Text(pDX, IDC_EDIT, m_strEdit); // 数据映射，进行双向关联
 DDV_MaxChars(pDX, m_strEdit, 50); // 验证，最大长度为 50
 ```
 
-# 成员函数
+## 成员函数
 
-## UpdateData
+### UpdateData
 
 - **False** : 将**成员变量**的值**传递给对话框**的变量;
 
@@ -34,7 +36,7 @@ DDV_MaxChars(pDX, m_strEdit, 50); // 验证，最大长度为 50
 > 
 > 在 DoDataExchange 中，我们**为每一个数据成员指定了一个对 DDX 函数的调用**。每一个函数定义了基于由成员函数 UpdateData 所提供的 CDataExchange 参数所确定的上下文而进行的双向数据交换。
 
-# 数据成员
+## 数据成员
 
 ### m_pMainWnd
 

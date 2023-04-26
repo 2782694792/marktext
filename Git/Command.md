@@ -1,8 +1,6 @@
 # 1、config 配置
 
-    `git config` 命令用于获取并设置存储库或全局选项。这些变量可以控制Git的外观和操作的各个方面。
-
-    简介：
+    `git config` 命令用于**获取并设置存储库或全局选项**。这些变量可以控制 Git 的外观和操作的各个方面。
 
 ```git
 git config [<file-option>] [type] [--show-origin] [-z|--null] name [value [value_regex]]
@@ -12,7 +10,7 @@ git config [<file-option>] [type] --replace-all name value [value_regex]
 git config [<file-option>] [type] [--show-origin] [-z|--null] 
     --get name [value_regex]
 git config [<file-option>] [type] [--show-origin] [-z|--null] 
-    --get-all name [value_regex]
+    --get-all name [value_re5gex]
 git config [<file-option>] [type] [--show-origin] [-z|--null] [--name-only] 
     --get-regexp name_regex [value_regex]
 git config [<file-option>] [type] [-z|--null] --get-urlmatch name URL
@@ -31,17 +29,17 @@ git config [<file-option>] -e | --edit
 
 - 查询 / 设置 / 替换 / 取消设置选项。该名称实际上是由点 ( `.` ) 分隔键，该值将被转义；
 
-- `--add` 将多行添加到选项。更新或取消设置多行可能出现的选项，则需要给出 POSIX 正则表达式 `value_regex` 。如果要处理不匹配的行，需在前面添加感叹号；
+- `--add` 将多行添加到选项。更新或取消设置多行可能出现的选项，则需要给出 POSIX 正则表达式 `value_regex` ；
 
 - 类型说明符可以是 `--int` 或 `--bool`，以使 `git config` 确保变量是给定类型，或者 `--path`，它进行一些路径扩展。如果没有类型说明符，则不执行检查或转换；
 
-- 读取时，默认从系统，全局和存储库本地配置文件读取值，而选项`--system`，`--global`，`--local`和`--file <filename>`可用于告知命令从只有那个位置设置和读取；
+- 读取时，**默认从系统，全局和存储库本地配置文件读取值**，而选项`--system`，`--global`，`--local`和`--file <filename>`可用于告知命令从只有那个位置设置和读取；
 
-- 写入时，默认将新值写入存储库本地配置文件，并且可以使用选项`--system`，`--global`，`--file <filename>`来告诉命令写入的位置( 默认值`--local`)；
+- 写入时，**默认将新值写入存储库本地配置文件**，并且可以使用选项`--system`，`--global`，`--file <filename>`来告诉命令写入的位置( 默认值`--local`)；
 
 - 错误代码：
-
-- | 代码  | 含义                             |
+  
+  | 代码  | 含义                             |
   | --- | ------------------------------ |
   | 0   | 0 成功，非 0 失败                    |
   | 1   | 部分或键无效                         |
@@ -53,19 +51,19 @@ git config [<file-option>] -e | --edit
 
 ## 1.2 存储位置
 
-1. `/etc/gitconfig` ：包含了适用于系统所有用户和所有库的值，通过 `—system` 读写；
+1. `/etc/gitconfig` ：包含了适用于**系统所有用户和所有库的值**，通过 `—system` 读写；
 
-2. `~/.gitconfig` ：具体到你的用户，通过 `--global` 读写；
+2. `~/.gitconfig` ：具体到你的**用户**，通过 `--global` 读写；
 
-3. `.git/config` ：每个级别重写前一个级别的值。覆盖了在`/etc/gitconfig`中的同一个值。
+3. `.git/config` ：每个级别重写前一个**级别**的值。覆盖了在`/etc/gitconfig`中的同一个值。
 
 ## 1.3 配置用户和密码
 
     使得 Git 将总是会使用以下信息来处理在系统中所做的一切操作：
 
 ```git
-$ git config --global user.name "maxsu"
-$ git config --global user.email "yiibai.com@gmail.com"
+$ git config --global user.name "m"
+$ git config --global user.email "y.com@gmail.com"
 ```
 
 > 若希望在不同项目使用不同信息，则取消 --global 选项。
@@ -99,15 +97,15 @@ $  git config user.email
 
 ## 1.7 添加 / 删除配置项
 
-- 添加 `-–add`：
+- **添加**`-–add`：
   
   格式：`git config [–local|–global|–system] –add section.key value`
 
 ```git
-$ git config -–add site.name yiibai
+$ git config -–add site.name y
 ```
 
-- 删除 `-–unset`：
+- **删除**`-–unset`：
   
   格式：`git config [–local|–global|–system] –unset section.key`
 
@@ -132,8 +130,6 @@ $ git help config
 
     显示有关Git的帮助信息。
 
-    简介：
-
 ```git
 $ git help [-a|--all] [-g|--guide]
          [-i|--info|-m|--man|-w|--web] [COMMAND|GUIDE]
@@ -143,7 +139,7 @@ $ git help [-a|--all] [-g|--guide]
 
 - `--all` / `-a` ：标准输出上打印所有可用的命令；
 
-- `--guide` / `-g` ：列出有用的Git指南；
+- `--guide` / `-g` ：列出有用的 Git 指南；
 
 - `git --help ...` 与 `git help` 相同，前者被内部转换为后者；
 
@@ -158,9 +154,7 @@ $ git help [-a|--all] [-g|--guide]
 
 # 3、init 初始化
 
-    创建一个空的Git仓库或重新初始化一个现有仓库。
-
-    简介：
+    **创建**一个空的 Git 仓库**或重新初始化**一个现有仓库。
 
 ```git
 $ git init [-q | --quiet] [--bare] [--template=<template_directory>]
@@ -174,13 +168,11 @@ $ git init [-q | --quiet] [--bare] [--template=<template_directory>]
 
 - 如果通过 `$GIT_OBJECT_DIRECTORY` 环境变量指定了对象存储目录，那么将在下面创建 `sha1` 目录，否则将使用默认的 `$GIT_DIR/objects` 目录；
 
-- 现有存储库中运行`git init`命令是安全的。 它不会覆盖已经存在的东西。 重新运行`git init`的主要原因是拾取新添加的模板（`--separate-git-dir`，移动存储库）。
+- 现有存储库中运行`git init`命令是安全的。 它**不会覆盖**已经存在的东西。**重新运行**`git init`的主要原因是**拾取新添加的模板**（`--separate-git-dir`，移动存储库）。
 
 # 4、add 添加
 
-    将文件内容添加到索引(将修改添加到暂存区)。也就是将要提交的文件的信息添加到索引库中。
-
-    简介：
+    将**文件内容添加到索引**(将修改添加到**暂存区**)。也就是将要提交的文件的信息添加到索引库中。
 
 ```git
 $ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
@@ -191,15 +183,15 @@ $ git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] 
 
 ## 4.1 描述
 
-- 将提交的文件信息添加到索引库（修改添加到暂存区），准备为下一次提交分段；通过选项，可以用于添加内容，只对工作树文件进行更改，或删除其中不存在的路径；
+- 将提交的文件信息添加到索引库（修改添加到暂存区），准备**为下一次提交分段**；通过选项，可以用于添加内容，只对工作树文件进行更改，或删除其中不存在的路径；
 
 - 多次执行，可将任何新的或修改的文件添加到索引；
 
-- 默认情况下，`git add` 不会添加忽略的文件，可以用`-f(force)`选项添加被忽略的文件。
+- 默认情况下，`git add` 不会添加忽略的文件，可以用`-f(force)`选项**添加被忽略的**文件。
 
 ## 4.2 基本用法
 
-    通过`git add <path>`的形式把`<path>`添加到索引库中，`<path>`可以是文件也可以是目录：
+- 通过`git add <path>`的形式把`<path>`添加到索引库中，`<path>`可以是文件也可以是目录：
 
 ```git
 $ git add <path>
@@ -227,8 +219,6 @@ $ git add <path>
 
     将存储库克隆到新目录中。
 
-    简介：
-
 ```git
 $ git clone [--template=<template_directory>]
       [-l] [-s] [--no-hardlinks] [-q] [-n] [--bare] [--mirror]
@@ -245,7 +235,7 @@ $ git clone [--template=<template_directory>]
   
   > `git branch -r` 可见远程分支
 
-- 没有参数的 `git pull` 将会将远程主分支合并到当前主分支；
+- 没有参数的 `git pull` 将会**将远程主分支合并到当前主分支**；
 
 - 默认配置通过在 `refs/remotes/origin` 下创建对远程分支头的引用，并通过初始化 `remote.origin.url` 和 `remote.origin.fetch` 配置变量来实现；
 
@@ -264,7 +254,7 @@ $ git clone rsync://repo.git
 $ git clone [user@]example.com:path/to/repo.git
 ```
 
-    通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。
+    通常来说，**Git 协议下载速度最快**，SSH 协议用于需要用户认证的场合。
 
 - 在当前目录中使用克隆，而无需检出：
 
@@ -280,9 +270,7 @@ $ git clone --bare -l /home/proj/.git /pub/scm/proj.git
 
 # 6、status 状态
 
-    用于显示工作目录和暂存区的状态，不显示已经 `commit` 到项目历史中去的信息。
-
-    简介：
+    用于**显示工作目录和暂存区的状态**，不显示已经 `commit` 到项目历史中去的信息。
 
 ```git
 $ git status [<options>…​] [--] [<pathspec>…​]
@@ -300,7 +288,7 @@ $ git status [<options>…​] [--] [<pathspec>…​]
   # Untracked files:(没有tracked过的文件, 即从没有add过的文件)
   ```
 
-- 通过 `git status -uno` 可以只列出所有已经被git管理的且被修改但没提交的文件：
+- 通过 `git status -uno` 可以只列出所有**已经被** git **管理**的**且被修改但没提交**的文件：
   
   ```git
   $ git status -uno
@@ -320,9 +308,7 @@ a.txt
 
 # 7、diff 更改
 
-    用于显示提交和工作树等之间的更改。此命令比较的是工作目录中当前文件和暂存区域快照之间的差异,也就是修改之后还没有暂存起来的变化内容。
-
-    简介：
+    用于**显示提交和工作树等之间的更改**。此命令比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是**修改之后还没有暂存起来的变化内容**。
 
 ```git
 git diff [options] [<commit>] [--] [<path>…​]
@@ -334,7 +320,7 @@ git diff [options] [--no-index] [--] <path> <path>
 
 ## 7.1 描述
 
-- 在工作树和索引或树之间显示更改，索引和树之间的更改，两个树之间的更改，两个blob对象之间的更改或两个文件在磁盘上的更改。
+- 在工作树和索引或树之间显示更改，索引和树之间的更改，两个树之间的更改，两个blob 对象之间的更改或两个文件在磁盘上的更改。
 
 ```git
 git diff <file> # 比较当前文件和暂存区文件差异 git diff
@@ -342,6 +328,7 @@ git diff <file> # 比较当前文件和暂存区文件差异 git diff
 git diff <id1><id1><id2> # 比较两次提交之间的差异
 
 git diff <branch1> <branch2> # 在两个分支之间比较
+
 git diff --staged # 比较暂存区和版本库差异
 
 git diff --cached # 比较暂存区和版本库差异
@@ -351,16 +338,16 @@ git diff --stat # 仅仅比较统计信息
 
 ## 7.2 基本用法
 
-- 检查工作树：
+- 检查**工作树**：
 
 ```git
 $ git diff            # 工作树中的更改尚未分段进行下一次提交
-$ git diff --stat     # 查看简单的diff结果
+$ git diff --stat     # 查看简单的 diff 结果
 $ git diff --cached   # 索引和最后一次提交之间的变化，以及 add 但没有 commit
 $ git diff HEAD       # 自上次提交以来工作树中的更改
 ```
 
-- 直接将两个分支上最新的提交做diff：
+- 直接将**两个分支上最新的提交**做 diff：
 
 ```git
 $ git diff topic master
@@ -377,14 +364,14 @@ $ git diff test
 $ git diff HEAD -- ./lib
 ```
 
-- 查看已经暂存起来的文件(staged)和上次提交时的快照之间(HEAD)的差异：
+- 查看 **已经暂存起来的文件(staged)和上次提交时的快照之间(HEAD)** 的差异：
 
 ```git
 $ git diff --cached
 $ git diff --staged
 ```
 
-- 显示工作版本(Working tree)和HEAD的差别:
+- 显示**工作版本(Working tree)和HEAD**的差别:
 
 ```git
 $ git diff HEAD
@@ -393,7 +380,7 @@ $ git diff HEAD
 $ git diff HEAD^ HEAD
 ```
 
-- 比较两个历史版本之间的差异：
+- 比较**两个历史版本之间**的差异：
 
 ```git
 $ git diff SHA1 SHA2
@@ -401,9 +388,7 @@ $ git diff SHA1 SHA2
 
 # 8、commit 提交
 
-    用于将更改记录(提交)到存储库。将索引的当前内容与描述更改的用户和日志消息一起存储在新的提交中。
-
-    简介：
+用于将更改记录(提交)到存储库。将索引的当前内容与描述更改的用户和日志消息一起存储在新的提交中。
 
 ```git
 git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
@@ -416,15 +401,13 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 ## 8.1 描述
 
-- 使用之前，通过使用`git add`对索引进行递增的“添加”更改；
+- 通过使用 `git add` 对索引进行递增的“添加”更改；
 
-- 将文件作为参数列出到`git commit`命令，提交将忽略索引中分段的更改，而是记录列出的文件的当前内容；
+- 将文件作为参数列出到 `git commit`命令，提交将忽略索引中分段的更改，而是记录列出的文件的当前内容；
 
-- 带有`-a`选项的`git commit`命令来自动从所有已知文件中添加 “更改”；
+- 带有 `-a` 选项的 `git commit`命令来自动从**所有已知文件**中添加 “更改”；
 
-- 使用`--interactive`或`--patch`选项与`git commit`命令一起确定除了索引中的内容之外哪些文件或hunks应该是提交的一部分；
-
-- `--dry-run`选项可用于通过提供相同的参数集(选项和路径)来获取上一个任何内容包含的下一个提交的摘要；
+- 使用 `--interactive / -i` 或 `--patch / -p` 选项与 `git commit` 命令一起以**交互方式**将工作树的修改内容或索引和工作树之间选择补丁块作为提交的一部分；
 
 - 使用 [git reset](http://www.yiibai.com/git/git_reset.html "git reset") 命令恢复。
 
@@ -432,9 +415,7 @@ git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
 
 # 9、reset 复位
 
-    用于将当前`HEAD`复位到指定状态。一般用于撤消之前的一些操作(如：`git add`,`git commit`等)。
-
-    简介：
+    用于将当前 `HEAD` **复位到指定状态**。一般用于**撤销**之前的一些操作(如：`git add`,`git commit`等)。
 
 ```git
 git reset [-q] [<tree-ish>] [--] <paths>…​
@@ -444,15 +425,15 @@ git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
 
 ## 9.1 描述
 
-- 在第一和第二种形式中，将条目从`<tree-ish>`复制到索引。
+- 在第一和第二种形式中，将条目从 `<tree-ish>` 复制到索引。
 
-- 在第三种形式中，将当前分支头(`HEAD`)设置为`<commit>`，可选择修改索引和工作树进行匹配。
+- 在第三种形式中，将当前分支头( `HEAD` )设置为 `<commit>`，可选择修改索引和工作树进行匹配。
 
-- 所有形式的`<tree-ish>/<commit>`默认为 `HEAD` 。
+- 所有形式的 `<tree-ish>/<commit>` 默认为 `HEAD` 。
 
 ## 9.2 基本用法
 
-    将当前的分支重设到指定的 commit 或者 HEAD（默认），并根据 [mode] 有可能更新索引或工作目录。
+    将当前的**分支重设**到指定的 commit 或者 HEAD（默认），并根据 [mode] 有可能更新索引或工作目录。
 
 > [mode] : `hard`、`soft`、`mixed`、`merged`、`keep`
 
@@ -460,7 +441,7 @@ git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]
 git reset [--hard|soft|mixed|merge|keep] [<commit>或HEAD]
 ```
 
-- `--hard`：重设(reset) 索引和工作目录，自从`<commit>`以来在工作目录中的任何改变都被丢弃，并把HEAD指向`<commit>`。
+- `--hard`：重设(reset) 索引和工作目录，自从`<commit>` 以来在工作目录中的任何改变都被丢弃，并把HEAD指向 `<commit>`。
 
 ### 9.2.1 回滚添加操作
 
@@ -489,18 +470,11 @@ $ git commit -a -c ORIG_HEAD  #(3)
 
 ```git
 $ git branch topic/wip     (1) 
-$ git reset --hard HEAD~3  (2) 回滚最近三次提交(删除HEAD, HEAD^, HEAD~2)
+$ git reset --hard HEAD~3  (2) 回滚最近三次提交(删除 HEAD, HEAD^, HEAD~2)
 $ git checkout topic/wip   (3)
 ```
 
-### 9.2.4 永久删除最后几个提交
-
-```git
-$ git commit ## 执行一些提交
-$ git reset --hard HEAD~3
-```
-
-### 9.2.5 回滚 merge 和 pull
+### 9.2.4  回滚 pull
 
 ```git
 $ git pull                         (1) 
@@ -510,15 +484,13 @@ $ git pull . topic/branch          (3) 将 topic/branch 分支合并到当前的
 $ git reset --hard ORIG_HEAD       (4) 把reset之前的HEAD放入.git/ORIG_HEAD文件中*
 ```
 
-### 9.2.6 在污染的工作区回滚合并或拉取
+### 9.2.5 回滚 merge
 
 ```git
-$ git pull                         (1) 
-... 
 $ git reset --merge ORIG_HEAD      (2)    
 ```
 
-    `git reset --hard ORIG_HEAD` 回滚到 pull 之前的状态，同时清空工作区，即丢弃本地 `add` 的改变，为了避免丢弃工作区的内容，将 `--hard` 改成 `--merge` ，这样就可以避免丢失。
+`git reset --hard ORIG_HEAD` 回滚到 pull 之前的状态，同时清空工作区 `add` 的改变，为了避免丢弃工作区的内容，将 `--hard` 改成 `--merge` ，这样可以避免丢失。
 
 ### 9.2.7 中断的工作流程处理
 
@@ -536,7 +508,6 @@ $ git commit ;# commit with real log
 # 回到原来的工作分支，进行回滚、清理索引
 $ git checkout feature 
 $ git reset --soft HEAD^ ;# go back to WIP state  (2) 
-$ git reset                                       (3)
 ```
 
 ### 9.2.8 重置单独的文件
@@ -545,8 +516,6 @@ $ git reset                                       (3)
 
 ```git
 $ git reset -- frotz.c                      (1) 从索引中去除 
-$ git commit -m "Commit files in index"     (2) 索引文件提交
-$ git add frotz.c                           (3) 再次加入索引
 ```
 
 ### 9.2.9 保留工作区并丢弃之前的提交
@@ -563,7 +532,7 @@ $ git reset --keep start                    (3) 撤销 start 之后的提交，�
 
 # 10、rm 删除
 
-    用于从工作区和索引中删除文件。
+    用于从工作区和索引中**删除**文件。
 
     简介:
 
@@ -582,7 +551,7 @@ git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]
 
 # 11、mv 移动命名
 
-    用于移动或重命名文件，目录或符号链接。
+    用于**移动或重命名**文件，目录或符号链接。
 
     简介：
 
@@ -601,7 +570,7 @@ git mv [-v] [-f] [-n] [-k] <source> ... <destination directory>
 
 # 12、branch 分支
 
-    用于列出，创建或删除分支。
+    用于**列出，创建或删除分支**。
 
     简介：
 
@@ -630,15 +599,20 @@ git branch --edit-description [<branchname>]
 
 - `--contains`，仅显示包含命名提交的分支；
 
-- `--no`，合并只会将未合并到命名提交中的分支列出；
-
-- `<pattern>`，它将被用作一个shell通配符，将输出限制为匹配的分支。提供`<pattern>`时，必须使用`--list`; 否则命令被解释为分支创建。
+- `<pattern>`，被用作一个 shell 通配符，将输出限制为匹配的分支。提供 `<pattern>`时，必须使用 `--list`; 否则命令被解释为分支创建。
 
 ## 12.2 基本用法
 
+- 创建远程分支：
+  
+  ```shell
+  $ git remote add new-remote-repo https://b.git
+  $ git push <new-remote-repo> crazy-experiment~
+  ```
+
 - 修改分支名：
   
-  ```git
+  ```shell
   $ git branch -m dev2 version.2
   # 列出
   $ git branch -r
@@ -646,8 +620,12 @@ git branch --edit-description [<branchname>]
 
 - 删除远程分支：
   
-  ```git
+  ```shell
   $ git push origin --delete dev2
+  $ git push origin :crazy-experiment
+  
+  # 删除本地分支
+  git branch -d crazy-experiment
   ```
 
 - 合并某个分支到当前分支：
@@ -659,9 +637,7 @@ git branch --edit-description [<branchname>]
 
 # 13、checkout 切换恢复
 
-    用于切换分支或恢复工作树文件。
-
-    简介：
+    用于**切换分支或恢复工作树**文件。
 
 ```git
 git checkout [-q] [-f] [-m] [<branch>]
@@ -743,8 +719,6 @@ git merge --no-commit maint
 # 15、mergetool 合并冲突解决工具
 
     用于运行合并冲突解决工具来解决合并冲突。
-
-    简介：
 
 ```git
 git mergetool [--tool=<tool>] [-y | --[no-]prompt] [<file>…]

@@ -297,3 +297,13 @@ string parse_element_attrKey();
 // 节点属性值解析
 string parse_element_attrValue();
 ```
+
+
+
+# Demo
+
+[2782694792/xmlParser: xml 可扩展文件的解析处理 (github.com)](https://github.com/2782694792/xmlParser "2782694792/xmlParser: xml 可扩展文件的解析处理 (github.com)")
+
+[xmlParser: xml 可扩展文件的解析处理 (gitee.com)](https://gitee.com/zheng_shuobin/xmlParser "xmlParser: xml 可扩展文件的解析处理 (gitee.com)")
+
+​

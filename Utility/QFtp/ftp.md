@@ -1,4 +1,16 @@
-# Ftp
+# C++ 与 ftp
+
+[C++的简单FTP客户端实现（一）FTP基础知识_c++ ftp-CSDN博客](https://blog.csdn.net/xuruilll/article/details/122763005)
+
+[C++的简单FTP客户端实现（二）编程_c++ftp_xuruilll的博客-CSDN博客](https://blog.csdn.net/xuruilll/article/details/122763022)
+
+- Websocket 实现
+
+[C/C++实现FTP客户端，实现上传、下载、删除功能_zao_yu的博客-CSDN博客](https://blog.csdn.net/zao_yu/article/details/121875460)
+
+- ftplib
+
+https://gitcode.net/mirrors/mkulke/ftplibpp
 
 ## 1.1 简介
 
@@ -97,7 +109,7 @@ cd 目录
 # 进入本地目录
 lcd 目录
 # 查看本地目录
-lls
+ls
 # 上传文件
 put [名称] [目录：所有文件]
 mput
@@ -113,6 +125,8 @@ rm
 get [文件名称] [-r 文件夹名称]
 mget
 ```
+
+![](https://cdn.nlark.com/yuque/0/2023/png/35714306/1682262230070-4926accf-05e7-4e01-a7ce-8067c7c72d10.png)
 
 # 实现方式
 
@@ -465,5 +479,3 @@ QString FtpUpload::toSpecialEncoding(const QString& inputStr)
 currentPath = currentPath.left(currentPath.lastIndexOf("/"));
 ftp.cd(currentPath);
 ```
-
-
