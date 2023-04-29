@@ -1,5 +1,7 @@
 # 多进程
 
+
+
 ## 前提
 
 **fork** 是一个在 **Linux** 系统环境下专有的函数，现有进程调用 fork 后将会创建一个新的进程。
@@ -89,6 +91,12 @@ void main_crtMore() {
 } 
 
 //--------------------------
+I'm 1th child, pid = 20986, ppid = 20985
+I'm 2th child, pid = 20987, ppid = 20985
+I'm 3th child, pid = 20988, ppid = 20985
+I'm 4th child, pid = 20989, ppid = 20985
+I'm 5th child, pid = 20990, ppid = 20985
+I'm parent, pid = 20985, ppid = 1585
 ```
 
 ## 进程计算
@@ -153,9 +161,139 @@ int main(int argc, char* argv[])
 
 4. 2 * 5 * 2 为  20 个进程，包括一个主进程 main。
 
+# 分类
+
+[Linux进程4：孤儿进程，僵尸进程(及解决方法)，守护进程讲解_哒宰的自我修养的博客-CSDN博客](https://blog.csdn.net/weixin_40734514/article/details/108990454)
+
+### 孤儿进程
+
+- **父进程先于子进程结束**，则子进程成为孤儿进程；
+
+- 此时子进程的**父进程成为 init 进程**，称为 init 进程领养孤儿进程。
+
+```php
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+    pid_t pid;
+    pid = fork(); // 创建一个进程
+    if (pid < 0) {
+        perror("fork error:"); // 创建失败
+        exit(1);
+    }
+    // 子进程
+    if (pid == 0) {
+        // 输出进程ID和父进程ID
+        printf("pid:%d\tppid:%d\n", getpid(), getppid());
+        // 睡眠5s，保证父进程先退出
+        sleep(5);
+        printf("pid:%d\tppid:%d\n", getpid(), getppid());
+        printf("child process isexited.\n");
+    }
+    // 父进程
+    else {
+        // 父进程睡眠1s，保证子进程输出进程id
+        sleep(1);
+        printf("father process is exited.\n");
+    }
+    return 0;
+}
+```
+
+## 僵尸进程
+
+- 子进程终止，**父进程尚未回收子进程退出状态**，子进程残留资源（PCB）于内核中，变成僵尸进程，以 Z 标识；
+
+- 如果父进程是死循环，那么该僵尸进程就将会**消耗空间**；如果父进程结束，将由 init 进程接手，此时可被清除；
+
+- 僵尸进程是**不能使用 kill 命令清除**，kill 命令只是用来终止进程，而僵尸进程已经终止了；
+
+- 子进程退出，通过**调用 wait 或 waitpid** 获取子进程的状态信息将**避免**僵尸进程；
+
+```cpp
+#include <unistd.h>
+int main() {
+    pid_t pid;
+    pid = fork();
+    if (pid < 0) {
+        perror("fork error:");
+        exit(1);
+    }
+    else if (pid == 0) {
+        printf("I am child process.I amexiting.\n");
+        exit(0);
+    }
+    printf("I am father process.I willsleep two seconds\n");
+    // 等待子进程先退出
+    sleep(2);
+    // 输出进程信息
+    system("ps -opid,ppid,state,tty,command");
+    printf("father process isexiting.\n");
+    return 0;
+}
+```
+
+## 守护进程
+
+- Daemon，是一类**脱离终端在后台执行的程序**，通常以 d 结尾，随系统启动，父进程通常是 init 进程。
+
+- 不与任何终端关联的进程，以 root 用户或其他特殊用户（apache\postfix）运行，不会被任何终端所产生的的终端信息所打断；
+
+- 从被执行开始，直到整个系统关闭才结束退出。
+
+### 创建步骤
+
+- 调用 fork()，创建新进程,它会是将来的守护进程；
+
+- 在父进程中调用 exit，保证子进程不是进程组长；
+
+- 调用 setsid() 创建新的会话区；
+
+- 将当前目录改成跟目录(如果把当前目录作为守护进程的目录,当前目录不能被卸载他作为守护进程的工作目录)；
+
+- 将标准输入、标注输出、标准错误重定向到 /dev/null；
+
+```cpp
+#include <unistd.h>
+int main(void) {
+    pid_t pid;
+    int   i;
+    pid = fork(); // 创建一个新进程,将来会是守护进程
+    if (pid == -1) {
+        return -1;
+    }
+    else if (pid != 0) { // 父进程调用exit,保证子进程不是进程组长
+        exit(EXIT_SUCCESS);
+    }
+    if (setsid() == -1) // 创建新的会话区
+    {
+        return -1;
+    }
+    if (chdir("/") == -1) // 将当前目录改成根目录
+    {
+        return -1;
+    }
+    for (i = 0; i < NR_OPEN; i++) {
+        close(i);
+    }
+    open("/dev/null", O_RDWR);
+    重定向
+    dup(0);
+    dup(0);
+    return;
+}
+```
+
 # exec 函数族
 
-在 Linux 中，有两组不同的 exec 函数族：System V（以下为例）和 POSIX。它们具有相似的函数名，但语法略有不同。
+- 在 **Linux** 中，有两组不同的 exec 函数族：System V（以下为例）和 POSIX。它们具有相似的函数名，但语法略有不同。
+
+- [Linux进程控制（exec函数族）的理解和使用_呋喃吖的博客-CSDN博客](https://blog.csdn.net/m0_46606290/article/details/123618822)
+
+- [exec函数详解_amoscykl的博客-CSDN博客](https://blog.csdn.net/amoscykl/article/details/80354052)
 
 ## 说明
 
@@ -167,9 +305,10 @@ int main(int argc, char* argv[])
 
 ## 组成
 
-- System V exec 函数族由 5 个函数组成，它们分别是 execl，execv，execlp，execvp 和 execle。
+- System V exec 函数族由 5 个函数组成，它们分别是 **execl**，**execv**，**execlp**，**execvp** 和 **execle**。
 
 ```php
+#include <unistd.h>
 int execl(const char *path, const char *arg, ...);
 int execv(const char *path, char *const argv[]);
 int execlp(const char *file, const char *arg, ...);
@@ -177,12 +316,204 @@ int execvp(const char *file, char *const argv[]);
 int execle(const char *path, const char *arg, ..., char *const envp[]);
 ```
 
-1. **l 和 v** 表示参数是以**列表**还是以**数组**的方式提供，都要**以 NULL 结尾**，arg[0] : 需要执行二进制程序的名字；
+1. **l (list)和 v (vector)** 表示参数是以**列表**还是以**数组**的方式提供，都要**以 NULL 结尾**，arg[0] : 需要执行二进制程序的名字；
 
-2. **p** 表示这个函数的第一个参数是 *path，就是以**绝对路径**来提供程序的路径，也可以以**当前目录**作为目标；
+2. **p (path)** 表示这个函数的第一个参数是 *path，就是以**绝对路径**来提供程序的路径，也可以以**当前目录**作为目标；
 
-3. **e** 表示为程序提供新的**环境变量**，不需要给 NULL；
+3. **e (env)** 表示为程序提供新的**环境变量**，不需要给 NULL；
 
 4. **argv[ ]** : 如执行 ls -al 命令，即 “ls”、“-al”、“NULL”，数组为 **{"ls","-al","NULL"}**；
 
 5. **envp[ ]** : 新环境变量，无为 NULL；
+
+6. 函数调用成功则加载新的程序并开始执行，不返回；函数调用出错，返回 -1；
+
+## 保留特征
+
+- exec 后新进程保持原进程以下特征：
+1. 环境变量（使用了execle、execve函数则不继承环境变量）；
+
+2. 进程 ID 和父进程 ID ；
+
+3. 实际用户 ID 和实际组 ID；
+
+4. 附加组 ID；进程组 ID；会话 ID；
+
+5. 控制终端；当前工作目录；根目录；
+
+6. 文件权限屏蔽字；文件锁；
+
+7. 进程信号屏蔽；未决信号；
+
+8. 资源限制；
+
+9. tms_utime、tms_stime、tms_cutime 以及 tms_ustime 值。
+
+## 示例
+
+1. execl、execv、execle 通过 path （可执行文件路径）确定可执行文件执行；
+
+2. PATH 环境变量包含目录表，系统通过该变量定义的路径搜索执行码，目录之间以冒号“:”分隔，以点号“.”结束；
+
+3. Linux 中 Shell 进程是所有执行码的父进程；
+
+4. 使用 execl、execv、execlp、execvp 函数使执行码重生时，Shell 进程会将所有环境变量复制给生成的新进程；
+
+5. 使用 execle、execve 时新进程不继承任何 Shell 进程的环境变量，而由 envp[ ] 数组自行设置环境变量。
+
+<img title="" src="file:///E:/MarkText/image cache/2023-04-28-19-36-13-image.png" alt="" data-align="center">
+
+[BgroundTools/include/multiProc at master · 2782694792/BgroundTools · GitHub](https://github.com/2782694792/BgroundTools/tree/master/include/multiProc)
+
+# wait 函数
+
+- #include <sys/wait.h>
+
+- 父进程调用 wait 就立即阻塞，由 wait 自动分析是否当前进程的某个子进程已经退出；
+
+- 如果找到了一个已经变成僵尸的子进程，wait 就收集它的信息，并把它彻底销毁后返回子进程的 PID；
+
+- 如果没有找到该类子进程，wait 就会一直阻塞，直到有一个出现为止；
+
+- 如果没有子进程，wait 返回 -1。
+
+```cpp
+static inline pid_t wait(int * wait_stat){
+    return waitpid(-1,wait_stat,0);
+}
+```
+
+## 成员参数
+
+- 参数 **status** 用来保存被收集进程退出时的一些状态，它是一个 int *；
+
+- `pid = wait(NULL);` （status == NULL）仅仅消灭僵尸进程，成功返回 PID，失败返回 -1，同时 errno 置为 ECHILD；
+
+- 如果 status 不为 NULL，子进程退出时的状态存入 status，从而可以进一步明确是正常退出或正常结束以及正常结束的返回值，或是否由信号处理结束以及信号处理结束后的信息。
+
+## 状态宏
+
+- 由于子进程的状态信息保存在整数的不同二进制位中，故选择对应状态判断宏；
+
+- 正常结束：**WIFEXITED(status)** 是正常退出则返回非零值，仅当 WIFEXITED 正常返回非零值时，通过 **WEXITSTATUS(status)** 获取子进程的返回值，如果子进程调用 exit(9) 则返回 9；
+
+- 信号结束：**WIFSIGNALED(wstatus)** 如果子进程被信号终止，则返回 true，仅当 WIFSIGNALED 返回 true 时，通过 **WTERMSIG(status)** 返回冬至子进程终止的信号编号；
+
+- 进程暂停：**WIFSTOPPED(status)** 如果子进程处于暂停状态时，返回非 0，通过 **WSTOPSIG(status)** 获取使得进程暂停的信号编号；
+
+- [wait(2) - Linux manual page (man7.org)](https://www.man7.org/linux/man-pages/man2/waitpid.2.html)。
+
+## 示例
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+void main_wait() {
+    pid_t pid, wpid;
+    pid = fork();
+    if (pid == -1) {
+        perror("fork error");
+        exit(1);
+    }
+    else if (pid == 0) { // 子进程
+        printf("child, pid = %d, ppid = %d, sleep 3s\n", getpid(), getppid());
+        sleep(3);
+        printf("******child die!*******\n");
+        exit(9);
+    }
+    else if (pid > 0) { // 父进程
+        // wpid = wait(NULL); // 阻塞 等待回收
+        int status;
+        wpid = wait(&status); // 阻塞，回收状态信息
+        if (wpid == -1) {
+            perror("wait error");
+            exit(1);
+        }
+
+        if (WIFEXITED(status)) {
+            printf("child exit with  %d\n", WEXITSTATUS(status));
+        }
+        if (WIFSIGNALED(status)) { // 信号终止
+            printf("child killed by %d\n", WTERMSIG(status));
+        }
+        printf("parent end! pid = %d\n", getpid());
+    }
+}
+```
+
+# waitpid 函数
+
+- 同 wait，但可以指定 pid 进程进行清理回收、非阻塞；
+
+- 调用 waitpid 和 wait 的作用是完全相同的，但 waitpid 多出了两个可由用户控制的参数：pid 和 options；
+
+```cpp
+pid_t waitpid(pid_t  pid, int * status, int options)
+```
+
+- 成功，返回子进程 PID，失败（无子进程），返回 -1；
+
+- 如果设置 WNOHANG，而 waitpid 发现没有已退出的子进程可收集，则返回 0；
+
+- 如果调用中出错，则返回 -1，errno 置为相应的值以指示错误所在；
+
+### 成员参数
+
+1. `pid` :  进程 ID；
+   
+   1. pid > 0 时，指定子进程，一致等待子进程结束；
+   
+   2. pid == -1 时，回收任意子进程；
+   
+   3. pid == 0 时，回收和当前调用 waitpid 同组的所有子进程；
+   
+   4. pid < -1 时，回收指定进程组内的任意子进程；
+
+2. `options` : 常熟选项，在 Linux 中只支持 **WNOHANG** 和 **WUNTRACED**；
+   
+   1. WNOHANG ：即使没有子进程退出，也会立即返回，非阻塞；
+   
+   2. WUNTRACED ：如果一个子进程已经停止（但没有通过 [ptrace(2) - Linux manual page (man7.org)](https://www.man7.org/linux/man-pages/man2/ptrace.2.html) 跟踪），也返回。即使未指定此选项，也会为已停止的跟踪子项提供状态。
+
+## 示例
+
+```cpp
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+int main()
+{
+    pid_t pc, pr;
+    pc = fork();
+    if (pc < 0)
+    {
+        printf("Error occured on forking.\n");
+    }
+    else if (pc == 0) // 子进程
+    {
+        sleep(10);
+        exit(0);
+    }
+
+    // 父进程
+    do {
+        pr = waitpid(pc, NULL,
+                     WNOHANG); /* 使用了WNOHANG参数，waitpid不会在这里等待 */
+        if (pr == 0)
+        {
+            printf("No child exited\n");
+            sleep(1);
+        }
+    } while (pr == 0);
+
+    if (pr == pc) {
+        printf("successfully get child %d\n", pr);
+    }
+    else
+        printf("error\n");
+}
+```

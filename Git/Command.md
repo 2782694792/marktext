@@ -492,19 +492,25 @@ $ git reset --merge ORIG_HEAD      (2)
 
 `git reset --hard ORIG_HEAD` 回滚到 pull 之前的状态，同时清空工作区 `add` 的改变，为了避免丢弃工作区的内容，将 `--hard` 改成 `--merge` ，这样可以避免丢失。
 
+### 9.2.6 区别
+
+- git reset –-soft：回退到某个版本，只回退了 commit 的信息，不会恢复到 index file 一级。如果还要提交，直接 commit 即可；
+
+- git reset -–hard：彻底回退到某个版本，本地的源码也会变为上一个版本的内容，撤销的 commit 中所包含的更改被冲掉。
+
 ### 9.2.7 中断的工作流程处理
 
     在工作分支 feature 下，当正在修改文件内容但又未完全处理完时，需要到另一分支 master 上去修改其他文件所存在的 bug ，我们可以这么做：
 
 ```git
 # 工作分支下暂时先提交修改
-$ git checkout feature ;# you were working in "feature" branch and 
-$ work work work       ;# got interrupted 
+$ git checkout feature 
+$ ...       
 $ git commit -a -m "snapshot WIP"                 (1) 
 # 切换指定分支进行修改并提交
 $ git checkout master 
-$ fix fix fix 
-$ git commit ;# commit with real log 
+$ ...
+$ git commit  
 # 回到原来的工作分支，进行回滚、清理索引
 $ git checkout feature 
 $ git reset --soft HEAD^ ;# go back to WIP state  (2) 
@@ -527,14 +533,12 @@ $ edit
 $ git commit ...                            (1) 当前分支下提交
 $ edit 
 $ git checkout -b branch2                   (2) 发现不该为 branch1 分支，切换
-$ git reset --keep start                    (3) 撤销 start 之后的提交，工作区不变
+$ git reset --keep start              (3) 撤销 start 之后的提交，工作区不变
 ```
 
 # 10、rm 删除
 
     用于从工作区和索引中**删除**文件。
-
-    简介:
 
 ```git
 git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch] 
@@ -543,17 +547,15 @@ git rm [-f | --force] [-n] [-r] [--cached] [--ignore-unmatch]
 
 ## 10.1 描述
 
-- 从索引中删除文件，或从工作树和索引中删除文件，仅仅是删除了物理文件，没有删除记录；
+- 从索引中删除文件，或从工作树和索引中删除文件，仅删除物理文件，没有删除记录；
 
-- 当给出`--cached`时，暂存区内容必须与分支的提示或磁盘上的文件相匹配，从而仅将文件从索引中删除；
+- 当给出 `--cached` 时，暂存区内容必须与分支的提示或磁盘上的文件相匹配，从而仅将文件从索引中删除；
 
 - `-am` 删除大批文件记录。
 
 # 11、mv 移动命名
 
     用于**移动或重命名**文件，目录或符号链接。
-
-    简介：
 
 ```git
 git mv <options>… <args>…
@@ -571,8 +573,6 @@ git mv [-v] [-f] [-n] [-k] <source> ... <destination directory>
 # 12、branch 分支
 
     用于**列出，创建或删除分支**。
-
-    简介：
 
 ```git
 git branch [--color[=<when>] | --no-color] [-r | -a]
@@ -599,7 +599,7 @@ git branch --edit-description [<branchname>]
 
 - `--contains`，仅显示包含命名提交的分支；
 
-- `<pattern>`，被用作一个 shell 通配符，将输出限制为匹配的分支。提供 `<pattern>`时，必须使用 `--list`; 否则命令被解释为分支创建。
+- `<pattern>`，被用作一个 shell 通配符，将输出限制为匹配的分支。提供 `<pattern>`时，必须使用 `--list` ; 否则命令被解释为分支创建。
 
 ## 12.2 基本用法
 
@@ -607,7 +607,7 @@ git branch --edit-description [<branchname>]
   
   ```shell
   $ git remote add new-remote-repo https://b.git
-  $ git push <new-remote-repo> crazy-experiment~
+  $ git push <new-remote-repo> master
   ```
 
 - 修改分支名：
@@ -621,8 +621,7 @@ git branch --edit-description [<branchname>]
 - 删除远程分支：
   
   ```shell
-  $ git push origin --delete dev2
-  $ git push origin :crazy-experiment
+  $ git push origin --delete branch2
   
   # 删除本地分支
   git branch -d crazy-experiment
@@ -676,9 +675,7 @@ git checkout mytopic
 
 # 14、merge 合并
 
-    用于将两个或两个以上的开发历史加入（合并）一起。
-
-    简介：
+    用于将两个或两个以上的**开发历史**加入（合并）一起。
 
 ```git
 git merge [-n] [--stat] [--no-commit] [--squash] [--[no-]edit]
@@ -691,25 +688,25 @@ git merge --continue
 
 ## 14.1 描述
 
-- 将来自命名提交的更改（从其历史从当前分支转移到当前分支之后）；
+- 将来自命名提交的更改（从其历史中从某一分支转移到当前分支之后）；
 
-- 合并来自另一个存储库的更改，可以手动使用将更改偶从一个分支合并到另一个分支。 
+- 合并来自另一个存储库的更改，可以手动使用将更改域从一个分支合并到另一个分支。 
 
 ## 14.2 基本用法
 
-- 合并分支 fixes 和 enhancements 在当前分支的顶部：
+- 合并分支 fixes 和 enhancements 在**当前分支的顶部**：
 
 ```git
 git merge fixes enhancements
 ```
 
-- 合并 obsolete 分支到当前分支，使用 `ours` 合并策略：
+- 合并 obsolete 分支到当前分支，使用 `ours` **合并策略**：
 
 ```git
 get merge -s ours obsolete
 ```
 
-- 合并 maint 分支到当前分支，但不自动进行新的提交：
+- 合并 maint 分支到当前分支，但**不自动进行新的提交**：
 
 ```git
 git merge --no-commit maint
@@ -743,12 +740,12 @@ git mergetool [--tool=<tool>] [-y | --[no-]prompt] [<file>…]
 ```git
 #difftool 配置  
 git config --global diff.tool bc4  
-git config --global difftool.bc4.cmd "\"c:/program files (x86)/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\""
+git config --global difftool.bc4.cmd "\"./beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\""
 
 
 #mergeftool 配置  
 git config --global merge.tool bc4
-git config --global mergetool.bc4.cmd  "\"c:/program files (x86)/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\""  
+git config --global mergetool.bc4.cmd "\"./beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\""  
 git config --global mergetool.bc4.trustExitCode true
 
 #让git mergetool不再生成备份文件(*.orig)  
@@ -764,8 +761,6 @@ git difftool HEAD
 # 16、log 日志
 
     用于显示提交日志信息。
-
-    简介：
 
 ```git
 git log [<options>] [<revision range>] [[\--] <path>…]
@@ -785,19 +780,19 @@ git log [<options>] [<revision range>] [[\--] <path>…]
 git log --no-merges
 ```
 
-- 显示自 `v2.6.12` 版以来所有提交更改 `include/scsi` 或 `drivers/scsi` 子目录中的任何文件的所有提交：
+- 显示自某个版本以来所有提交更改 `include/scsi` 或 `drivers/scsi` 子目录中的任何文件的所有提交：
 
 ```git
-git log master include/scsi drivers/scsi
+git log master include/* drivers/*
 ```
 
-- 显示最近两周的更改文件 `gitk` （ -- 避免分支混淆）:
+- 显示**最近两周**的更改文件 `Cmakelist.txt` （ 避免分支混淆）:
 
 ```git
-git log --since="2 weeks ago" --gitk
+git log --since="2 weeks ago" -- Cmakelist.txt
 ```
 
-- 显示“`test`”分支中尚未在“`release`”分支中的提交，以及每个提交修改的路径列表：
+- 显示 `test` 分支中尚未在 `release` 分支中的提交，以及每个提交修改的路径列表：
 
 ```git
 git log --name-status release..test
@@ -809,16 +804,10 @@ git log --name-status release..test
 git log --follow builtin/rev-list.c
 ```
 
-- 显示在任何本地分支中的所有提交，但不包括任何远程跟踪分支机构的起始点：
+- 显示在任何本地分支中的所有提交，但**不包括任何远程跟踪**分支机构的起始点：
 
 ```git
-git log --branches --not --remotes=origin
-```
-
-- 显示本地主服务器中的所有提交，但不显示任何远程存储库主分支：
-
-```git
-git log master --not-remote=*/master
+git log branchename --not --remotes=origin
 ```
 
 - 显示历史，包括变化差异，但仅从“主分支”的角度来看，忽略来自合并分支的提交，并显示合并引入的变化的完全差异：
