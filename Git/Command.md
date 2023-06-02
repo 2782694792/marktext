@@ -871,9 +871,7 @@ $ git log --before={3,weeks,ago} --after={2018-04-18}
 
 # 17、stash 储藏
 
-    用于将更改储藏在脏工作目录中。
-
-    简介：
+用于将更改储藏在脏工作目录中。
 
 ```git
 git stash list [<options>]
@@ -893,7 +891,7 @@ git stash store [-m|--message <message>] [-q|--quiet] <commit>
 
 ## 17.2 描述
 
-- 当要记录工作目录和索引的当前状态，但想要返回干净的工作目录时，使用 `git stash` 保存本地修改，并恢复工作目录以匹配 `HEAD` 提交；
+- 当要记录工作目录和索引的当前状态，但想要返回干净的工作目录时，使用 `git stash` **保存本地修改**，并恢复工作目录以匹配 `HEAD` 提交；
 
 - `list` 列出所储藏的修改，`show` 进行检查，`apply` 恢复，默认情况下，储藏列表”分支名称上的 WIP “，但可以在创建一个消息时在命令行上给出具体描述性的消息；
 
@@ -903,7 +901,7 @@ git stash store [-m|--message <message>] [-q|--quiet] <commit>
 
 - 拉取到一颗肮脏树
 
-    当发现本地的更改与上游的更改冲突时，`git pull` 拒绝覆盖您的更改，此时可以隐藏更改，执行 `git pull` ，再解压缩：
+当发现本地的更改与上游的**更改冲突**时，`git pull` 拒绝覆盖您的更改，此时可以隐藏更改，执行 `git pull` ，再解压缩：
 
 ```git
  git pull
@@ -916,7 +914,7 @@ $ git stash pop
 
 - 工作流中断
 
-    当要处理紧急的事务从而不得不中断自己的工作流程时，应该提交临时分支来存储更改并返回原始分支进行紧急修复：
+当要处理紧急的事务从而不得不中断自己的工作流程时，应该**提交临时分支来存储更改**并返回原始分支进行紧急修复：
 
 ```git
 $ git checkout -b my_wip                // 临时分支
@@ -939,7 +937,7 @@ $ git stash pop    // 获取最近一次储藏的内容，之后删除栈中对�
 
 - 储藏工作
 
-    当修改了文件后，想要切换分支但不想提交当前进行的工作，此时可以往栈中推送新的储藏：
+当修改文件后，想要**切换分支但不想提交当前**进行的工作，此时可以往栈中推送新的储藏：
 
 ```git
 $ git stash
@@ -954,7 +952,7 @@ $ git stash list
 
 - 应用存储
 
-    若想应用之前的变更，可以通过 `apply` 进行指定应用，不指定将会使用最近的存储：
+若想应用之前的变更，可以通过 `apply` 进行指定应用，不指定将会使用最近的存储：
 
 ```git
 $ git stash apply
@@ -972,7 +970,7 @@ $ git stash drop stash@{0}
 
 - 取消储藏
 
-    通过取消该储藏的补丁使得取消之前所储藏的修改：
+通过取消该储藏的补丁使得**取消之前所储藏**的修改：
 
 ```git
 $ git stash show -p stash@{0} | git apply -R
@@ -986,7 +984,7 @@ $ git stash-unapply
 
 - 储藏中创建分支
 
-    当储藏了一些工作之后继续工作，重新储藏将会归并冲突，若想重新检验储藏变更，创建新分支，成功将会丢弃储藏：
+当储藏了一些工作之后继续工作，重新储藏将会归并冲突，若想重新检验储藏变更，创建新分支，成功将会丢弃储藏：
 
 ```git
 $ git stash branch testchanges
@@ -994,9 +992,7 @@ $ git stash branch testchanges
 
 # 18、tag 标签
 
-    用于创建，列出，删除或验证使用GPG签名的标签对象。
-
-    简介：
+- 用于创建，列出，删除或验证使用 **GPG 签名**的标签对象。
 
 ```git
 git tag [-a | -s | -u <keyid>] [-f] [-m <msg> | -F <file>]
@@ -1011,17 +1007,17 @@ git tag -v [--format=<format>] <tagname>…
 
 ## 18.1 描述
 
-- 创建标签可以：用于在开发阶段，某个阶段的完成，创建一个版本，在开发中都会使用到，指向软件开发中的一个关键时期；
+- 创建**标签**可以：用于在开发阶段，某个阶段的完成，创建一个**版本**，在开发中都会使用到，指向软件开发中的一个关键时期；
 
-- 不能创建已经存在的标签，除非指定 `-f`；
+- **不能创建已经存在的标签**，除非指定 `-f`；
 
 - 创建标签对象以及一个标签消息：`-a` 、`-s` 或 `-u <keyid>`，使用 `-m <msg>` 或 `-F <file>`，否则将启动编辑器自主输入标签消息；
 
 - 标签类型：
   
-  - 轻量级标签，像是不会变化的分支，实际上它就是个指向特定提交对象的引用。
+  - **轻量级标签**，像不会变化的分支，实际上就是个指向特定提交对象的引用；
   
-  - 含附注标签，实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证。
+  - **含附注标签**，实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证。
 
 ## 18.2 基本用法
 
@@ -1043,20 +1039,20 @@ $ git tag v1.4-lw
 # git show 查看响应标签的版本信息，包括标签对象
 --$ git show v1.4
 tag v1.4
-Tagger: Scott Chacon <schacon@gee-mail.com>
+Tagger: Scott Chacon <1@qq.com>
 Date:   Mon Feb 9 14:45:11 2009 -0800
 
 my version 1.4
 
-commit 15027957951b64cf874c3557a0f3547bd83b3ff6
-Merge: 4a447f7... a6b4c97...
-Author: Scott Chacon <schacon@gee-mail.com>
-Date:   Sun Feb 8 19:02:46 2009 -0800
+commit 15027951111...3b3ff6
+Merge: 4a41117... a611117...
+Author: n <1@qq.com>
+Date:   Sun Feb 18 10:10:10 2009 -0800
 ```
 
 - 签署标签：
 
-    如果有自己的私钥，还可用 GPG 来签署标签：
+如果有自己的私钥，还可用 GPG 来签署标签：
 
 ```git
 $ git tag -s v1.5 -m 'my signed 1.5 tag'
@@ -1065,30 +1061,30 @@ $ git tag -s v1.5 -m 'my signed 1.5 tag'
 - 删除标签：
 
 ```git
-$ git tag -d v1.0    
+$ git tag -d v1.0
 ```
 
 - 验证已经签署的标签：
 
 ```git
-$ git tag -v v1.4.2.1
-object 883653babd8ee7ea23e6a5c392bb739348b1eb61
+$ git tag -v v1.4
+object 883653babd11111116a5c392bb739348b1eb61
 type commit
-tag v1.4.2.1
-tagger Junio C Hamano <junkio@cox.net> 1158138501 -0700
+tag v1.4
+tagger 1C 1<1@1.1> 111111111-0700
 
-GIT 1.4.2.1
+GIT 1.4
 ```
 
 - 后期标签加注：
 
 ```git
-$ git tag -a v1.2 9fceb02
+$ git tag -a v1.2 9fceb11
 ```
 
 - 分享标签：
 
-    默认情况下不会把标签传送到远端服务器上，只有通过显式命令才能分享标签到远端仓库。运行 `git push origin [tagname]` ：
+默认情况下不会把标签传送到远端服务器上，只有通过显式命令才能分享标签到远端仓库。运行 `git push origin [tagname]` ：
 
 ```git
 $ git push origin --tags
@@ -1096,19 +1092,16 @@ Counting objects: 50, done.
 Compressing objects: 100% (38/38), done.
 Writing objects: 100% (44/44), 4.56 KiB, done.
 Total 44 (delta 18), reused 8 (delta 1)
-To git@github.com:schacon/simplegit.git
+To git@github.1/1.git
  * [new tag]         v0.1 -> v0.1
  * [new tag]         v1.2 -> v1.2
  * [new tag]         v1.4 -> v1.4
  * [new tag]         v1.4-lw -> v1.4-lw
- * [new tag]         v1.5 -> v1.5
 ```
 
 # 19、fetch 获取
 
-    用于从另一个存储库中下载对象和引用。
-
-    简介：
+用于从另一个存储库中**下载对象和引用**。
 
 ```git
 git fetch [<options>] [<repository> [<refspec>…]]
@@ -1119,15 +1112,15 @@ git fetch --all [<options>]
 
 ## 19.1 描述
 
-- 从一个或多个其他存储库中获取分支或标签（引用）以及完成其历史所必需的对象；
+- 从一个或多个其他存储库中**获取分支或标签（引用）以及完成其历史所必需的对象****；
 
-- 远程跟踪以更新，需要将这些更新获取回本地；
+- 远程跟踪以更新，需要将这些**更新获取回本地**；
 
-- 默认情况下还会获取正在获取的历史记录的任何标签；
+- 默认情况下还会获取正在获取的历史记录的**任何标签**；
 
 - 可以从单个命名的存储库或 URL 中，也可以从多个存储库中获取；
 
-- 获取的参考名称以及它们所指向的对象名称被写入到`.git/FETCH_HEAD`中。
+- 获取的参考名称以及它们所指向的对象名称被写入到 `.git/FETCH_HEAD` 中。
 
 ## 19.2 基本用法
 
@@ -1148,7 +1141,7 @@ $ git fetch origin +pu:pu maint:tmp
 - 远程分支上窥视：
 
 ```git
-$ git fetch git://git.kernel.org/pub/scm/git/git.git maint
+$ git fetch git://git.1.org/1/git.git maint
 # 使用FETCH_HEAD来检查具有git-log的分支
 $ git log FETCH_HEAD 
 ```
@@ -1169,9 +1162,7 @@ $ git branch -a
 
 # 20、pull 整合
 
-    用于从另一个存储库或本地分支获取并集成（整合）到本地分支。
-
-    简介：
+用于从另一个存储库或本地分支**获取并集成（整合）到本地分支**。
 
 ```git
 git pull [options] [<repository> [<refspec>…]]
@@ -1179,7 +1170,7 @@ git pull [options] [<repository> [<refspec>…]]
 
 ## 20.1 描述
 
-- 默认模式下，`git pull`是`git fetch`后跟`git merge FETCH_HEAD`的缩写；
+- 默认模式下，`git pull` 是 `git fetch` 后跟 `git merge FETCH_HEAD` 的缩写；
 
 - `git pull`使用给定的参数运行`git fetch`，并调用`git merge`将检索到的分支头合并到当前分支中。
 
@@ -1205,9 +1196,9 @@ $ git pull
 $ git pull --rebase <远程主机名> <远程分支名>:<本地分支名>
 ```
 
-## 20.3 与 fetch 的区别
+## 20.3 pull 与 fetch 的区别
 
-1. git fetch ：相当于是从远程获取最新到本地，不会自动合并；
+1. git fetch ：相当于是**从远程获取最新到本地，不会自动合并**；
 
 ```git
 $ git fetch origin master            # 下载最新版本都本地
@@ -1215,7 +1206,7 @@ $ git log -p master..origin/master   # 比较分支差别
 $ git merge origin/master            # 合并
 ```
 
-2. git pull ：相当于是从远程获取最新并 merge 到本地；
+2. git pull ：相当于是**从远程获取最新并 merge 到本地**；
 
 ```git
 git pull origin master
@@ -1223,9 +1214,7 @@ git pull origin master
 
 # 21、push 更新推送
 
-    用于将本地分支的更新，推送到远程主机。格式与 pull 相似。
-
-    简介：
+用于将本地分支的更新，推送到远程主机。格式与 pull 相似。
 
 ```git
 $ git push <远程主机名> <本地分支名>:<远程分支名>
@@ -1317,9 +1306,7 @@ $ git push origin :tag_name
 
 # 22、remote 管理
 
-    用于管理一组跟踪的存储库。
-
-    简介：
+- 用于管理一组跟踪的存储库。
 
 ```git
 git remote [-v | --verbose]
@@ -1364,21 +1351,19 @@ $ git fetch staging
 # 查看分支关系
 $ git branch -r
 # 切换到远程分支
-$ git checkout -b staging staging/master
+$ git checkout -b github/master
 ```
 
 - **模仿 clone ，但只跟踪选定分支**
 
 ```git
-$ git remote add -f -t master -m master origin git://example.com/git.git/
+$ git remote add -f -t master -m master origin git://example.com/git.git
 $ git merge origin
 ```
 
 # 23、submodule 管理子模块
 
-    用于初始胡、更新或检出子模块。
-
-    简介：
+- 用于初始化、更新或检出子模块。
 
 ```git
 git submodule [--quiet] add [<options>] [--] <repository> [<path>]
@@ -1406,7 +1391,7 @@ git submodule [--quiet] absorbgitdirs [--] [<path>…​]
 
 ## 23.2 描述
 
-    submodule 是一个很好的多项目使用共同类库的工具。
+    submodule 是一个很好的**多项目使用共同类库的工具**。
 
 - 允许类库项目为 repository，子项目为一个单独的 git 项目存在父项目中，子项目可以有自己的独立的`commit`，`push`，`pull`；
 
@@ -1417,7 +1402,7 @@ git submodule [--quiet] absorbgitdirs [--] [<path>…​]
 ## 23.3 基本用法
 
 - **添加子模块**：
-1. 添加名为 “DbConnector” 的库，默认情况下子模块会将子项目放到一个与仓库同名的目录：
+1. 添加名为 “DbConnector” 的库，**默认**情况下子模块会**将子项目放到一个与仓库同名的目录**：
 
 ```git
 $ git submodule add http://github.com/chaconinc/DbConnector
@@ -1472,7 +1457,7 @@ Checking connectivity... done.
 Submodule path 'DbConnector': checked out 'c3f01dc8862123d317dd46284b05b6892c7b29bc'
 ```
 
-3. 也可以在 clone 时利用 `--recursive` 进行自动初始化并更新仓库中的每一个子模块： 
+3. 也可以在 clone 时利用 `--recursive` 进行**自动初始化并更新**仓库中的每一个子模块： 
 
 ```git
 $ git clone --recursive http://github.com/chaconinc/MainProject
@@ -1493,9 +1478,7 @@ git commit -a -m 'remove pod-library submodule'
 
 # 24、show 显示
 
-    用于显示各种类型的对象。
-
-    简介：
+- 用于显示各种类型的对象。
 
 ```git
 git show [options] <object>…​
@@ -1517,25 +1500,25 @@ git show [options] <object>…​
 
 ## 24.2 基本用法
 
-- 显示标签及其指向对象：
+- 显示标签及其指向**对象**：
 
 ```git
 $ git show v1.0.0
 ```
 
-- 显示标签指向的树：
+- 显示标签指向的**树**：
 
 ```git
 $ git show v1.0.0^{tree}
 ```
 
-- 显示标签指向的提交的主题：
+- 显示标签指向的**提交的主题**：
 
 ```git
 $ git show -s --format=%s v1.0.0^{commit}
 ```
 
-- 显示 README 文件内容，next 分支的第10次提交的内容：
+- 显示 README 文件内容，next 分支的第10次**提交的内容**：
 
 ```git
 $ git show next~10:README
@@ -1549,16 +1532,14 @@ $ git show master:Makefile master:t/Makefile
 
 # 25、shortlog 汇总
 
-    用于汇总 git 日志输出。
-
-    简介：
+- 用于**汇总 git 日志输出**。
 
 ```git
 git log --pretty=short | git shortlog [<options>]
 git shortlog [<options>] [<revision range>] [[\--] <path>…​]
 ```
 
-    如果在命令行上没有传递修订版本，并且标准输入不是终端或没有当前的分支，则`git shortlog`将输出从标准输入读取的日志的摘要，而不引用当前存储库。
+如果在命令行上没有传递修订版本，并且标准输入不是终端或没有当前的分支，则 `git shortlog` 将输出从标准输入读取的日志的摘要，而不引用当前存储库。
 
 ## 25.1 基本用法
 
@@ -1576,7 +1557,7 @@ $ git shortlog -s -n
 
 # 26、describe 显示最近标签
 
-    显示离当前提交最近的标签。
+    显示**离当前提交最近的标签**。
 
     简介：
 
@@ -1608,9 +1589,7 @@ tag1-2-g026498b
 
 # 27、rebase 合并修改
 
-    在另一个分支基础之上重新应用，用于把一个分支的修改合并到当前分支。
-
-    简介：
+- 在另一个分支基础之上重新应用，用于**把一个分支的修改合并到当前分支**。
 
 ```git
 git rebase [-i | --interactive] [options] [--exec <cmd>] [--onto <newbase>]
@@ -1641,8 +1620,6 @@ $ git checkout -b mywork origin
 # 2.
 $ vi file.txt
 $ git commit
-$ vi otherfile.txt
-$ git commit
 # 3.
 $ git pull ...
 ```
@@ -1659,7 +1636,7 @@ $ git rebase origin
 
 <img src="file:///D:/Download/MarkText/workspace/image/2022-11-22-11-10-00-image.png" title="" alt="" data-align="center">
 
-    更细 mywork 之后，会指向新的提交，丢弃旧的提交。
+    更新 mywork 之后，会指向新的提交，丢弃旧的提交。
 
 > 运行垃圾收集命令(pruning garbage collection), 删除被丢弃的提交。
 
@@ -1675,7 +1652,7 @@ $ git rebase --continue
 
     此时 git 会 apply 余下的 补丁。
 
-    任何时候可以用 --abort 来终止 rebase 操作。并且 mywork 会回到 rebase 开始前的状态：
+- 可以用 `--abort` 来**终止** rebase 操作。并且 mywork 会回到 rebase 开始前的状态：
 
 ```git
 $ git rebase --abort

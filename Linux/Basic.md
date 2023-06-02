@@ -378,6 +378,7 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 - access time（atime）: 读取文件时就会更新。
 
 <<<<<<< HEAD
+
 ## 文件与目录操作
 
 常用命令
@@ -397,15 +398,18 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 - `rm`（remove）: 删除文件或目录
 
 - `mv`（move file）: 移动文件与目录，或修改文件与目录名称
-=======
-## 文件与目录的基本操作
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+  =======
+  
+  ## 文件与目录的基本操作
+  
+  > > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 
 ### 1. ls
 
 [列出当前工作文件或者目录的信息，目录的信息就是其中包含的文件]([Linux ls命令:显示指定工作目录下的内容 - Linux命令 - C语言网](https://www.dotcpp.com/course/655))
 
 <<<<<<< HEAD
+
 ```shell
 [root@www ~] ls [-aAdfFhilnrRSt] 目录名称
 [root@www ~] ls [--color={never,auto,always}] 目录名称
@@ -419,6 +423,7 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 - `-l` ：长数据串列出，包含文件属性与权限等数据。
 
 =======
+
 ```cs
 ## ls [-aAdfFhilnrRSt] file | dir
 -a : 列出全部文件
@@ -426,12 +431,14 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 -l : 以长数据串行列出，包含文件的属性与权限等数据
 ```
 
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
 ### 2. cd
 
 [更换当前目录]([Linux cd命令:切换工作目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/657))
 
 <<<<<<< HEAD
+
 ```shell
 # 绝对路径
 [root@www ~] cd /root/runoob/
@@ -452,6 +459,7 @@ cd [相对路径或绝对路径]
 [创建目录]([Linux mkdir命令:创建目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/679))
 
 <<<<<<< HEAD
+
 ```shell
 mkdir [-mp] test1/test2/test3/test4
 
@@ -468,12 +476,13 @@ mkdir [-mp] test1/test2/test3/test4
 ```
 
 - `-p` ：删除多级**空目录**。
-=======
-```cs
-## mkdir [-mp] 目录名称
--m : 配置目录权限
--p : 递归创建目录
-```
+  =======
+  
+  ```cs
+  ## mkdir [-mp] 目录名称
+  -m : 配置目录权限
+  -p : 递归创建目录
+  ```
 
 ### 4. rmdir
 
@@ -483,7 +492,8 @@ mkdir [-mp] test1/test2/test3/test4
 ## rkdir [-p] 目录名称
 -p : 递归删除目录
 ```
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
+> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 
 ### 5. touch
 
@@ -503,6 +513,7 @@ mkdir [-mp] test1/test2/test3/test4
 [复制文件，若源文件有两个以上，则目的文件一定要是目录才行]([Linux cp命令:复制文件或目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/687))
 
 <<<<<<< HEAD
+
 ```shell
 [root@www ~] cp [-adfilprsu] 来源档(source) 目标档(destination)
 [root@www ~] cp [options] source1 source2 source3 .... directory
@@ -547,6 +558,7 @@ rm [-fir] 文件或目录
 - `-r` ：递归删除。
 
 =======
+
 ```cs
 ## cp [-adfilprsu] source destination
 -a : 相当于 -dr --preserve=all
@@ -568,12 +580,12 @@ rm [-fir] 文件或目录
 -r : 递归删除
 ```
 
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
 ### 8. mv
 
 [将文件或目录改名，或移动文件]([Linux mv命令:移动或重命名文件或目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/690))
 
-<<<<<<< HEAD
 ```shell
 [root@www ~] mv [-fiu] source destination
 [root@www ~] mv [options] source1 source2 source3 .... directory
@@ -583,14 +595,14 @@ rm [-fir] 文件或目录
 - `-i` ：询问是否覆盖；
 - `-u` ：若目标文件已存在，且 source 比较新，才会升级 (update)。
 
-=======
 ```cs
 ## mv [-fiu] source destination
 ## mv [options] source1 source2 source3 .... directory
 -f : force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖
 ```
 
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
 ## 修改权限
 
 [chmod 管理文件或目录的权限]([Linux chmod命令:权限管理 - Linux命令 - C语言网](https://www.dotcpp.com/course/699))
@@ -685,7 +697,6 @@ rm [-fir] 文件或目录
 
 ### 1. cat
 
-<<<<<<< HEAD
 [取得文件内容并输出到标准输出，同时还可以用于合并文件](https://www.dotcpp.com/course/681)
 
 ```cs
@@ -704,7 +715,6 @@ rm [-fir] 文件或目录
 
 - `-v` ：列出特殊字符。
 
-=======
 [取得文件内容并输出到标准输出，同时还可以用于合并文件]([Linux cat命令:连接文件并打印到标准输出设备上 - Linux命令 - C语言网](https://www.dotcpp.com/course/681))
 
 ```cs
@@ -712,12 +722,14 @@ rm [-fir] 文件或目录
 -n : 打印出行号，连空白行也会有行号，但 -b 不会
 ```
 
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
 ### 2. tac
 
 是 cat 的反向操作，从最后一行开始打印
 
 <<<<<<< HEAD
+
 ```shell
 [root@www ~] tac /etc/issue
 
@@ -765,6 +777,7 @@ CentOS release 6.4 (Final)
 
 [查看文件前几行](https://www.dotcpp.com/course/693)
 =======
+
 ### 3. more
 
 [和 cat 不同的是，它可以一页一页的查看文件内容，适合大文档的查看]([Linux more命令:显示文本文件内容 - Linux命令 - C语言网](https://www.dotcpp.com/course/680))
@@ -776,7 +789,8 @@ CentOS release 6.4 (Final)
 ### 5. head
 
 [查看文件前几行]([Linux head命令:查看文件前几行 - Linux命令 - C语言网](https://www.dotcpp.com/course/693))
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
+> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 
 ```cs
 ## head [-n number] filename
@@ -789,7 +803,8 @@ CentOS release 6.4 (Final)
 [head 的反向操作，查看文件后几行](https://www.dotcpp.com/course/694)
 =======
 [head 的反向操作，查看文件后几行]([Linux tail命令:查看文件后几行 - Linux命令 - C语言网](https://www.dotcpp.com/course/694))
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
+> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 
 ### 7. od
 
@@ -799,5 +814,6 @@ CentOS release 6.4 (Final)
 - `-n` ：后接数字，代表显示几行；
 
 - `-f` ：表示持续侦测后面所接档名，要等到按下 [ctrl]-c 才结束 tail 侦测。
-=======
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+  =======
+  
+  > > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01

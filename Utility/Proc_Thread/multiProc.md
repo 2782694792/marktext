@@ -1,6 +1,14 @@
 # 多进程
 
+- 进程是系统进行资源分配的基本单位，是程序加载到内存后的执行过程；
 
+- 进程一股由数据段，代码段和进程控制块三部分组成；
+
+- 系统通过进程控制块感知进程的存在并对进程进行控制；
+
+- 由于进程之间虚拟地址空间相互独立，多进程比多线程更安全，一个进程基本上不会影响另外一个进程；
+
+- 进程三种状态：就绪、运行、阻塞。
 
 ## 前提
 
@@ -12,7 +20,17 @@
 
 3. 调用 fork() 函数后，**系统先给新的进程分配资源**，例如存储数据和代码的空间，然后把原来的进程的所有值都**复制到新的进程**中，只有少数值与原来的进程的值不同。
 
-## 创建
+## 上下文开销
+
+- 上下文保存：进程被暂停时，操作系统需要保存进程的上下文信息，包括程序计数器、堆栈指针、通用寄存器等；
+
+- 上下文切换：当一个进程被恢复执行，操作系统需要将该进程的上下文信息恢复，并且将当前CPU的控制权切换到该进程的代码流；
+
+- 外部调用：当进程需要调用外部资源时，例如IO操作或者网络通信，操作系统需要将当前进程的控制权交给相应的驱动程序；
+
+- 缓存刷新：当CPU切换到一个新进程时，操作系统需要刷新CPU缓存。这是因为缓存中存储着特定进程的数据和指令，而切换进程后，缓存中的数据和指令已经无效。
+
+## 进程创建
 
 #### 单个子进程
 
@@ -362,6 +380,21 @@ int execle(const char *path, const char *arg, ..., char *const envp[]);
 5. 使用 execle、execve 时新进程不继承任何 Shell 进程的环境变量，而由 envp[ ] 数组自行设置环境变量。
 
 <img title="" src="file:///E:/MarkText/image cache/2023-04-28-19-36-13-image.png" alt="" data-align="center">
+
+```cpp
+execl("/bin/ls", "ls", "-l", (char *)0);
+
+char *args[] = { "ls", "-l", NULL };
+execv("/bin/ls", args);
+
+execlp("ls", "ls", "-l", (char *)0);
+
+char *args[] = { "ls", "-l", NULL };
+execvp("ls", args);
+
+char *env[] = { "HOME=/usr/home", "LOGNAME=guest", (char *)0 };
+execle("/bin/ls", "ls", "-l", (char *)0, env);
+```
 
 [BgroundTools/include/multiProc at master · 2782694792/BgroundTools · GitHub](https://github.com/2782694792/BgroundTools/tree/master/include/multiProc)
 
