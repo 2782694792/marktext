@@ -14,11 +14,11 @@ command [options][arguments]
 # 命令 [选项][参数]
 ```
 
-command : 命令，表示可执行的二进制格式文件或者脚本程序文件。
+- command : 命令，表示可执行的二进制格式文件或者脚本程序文件。
 
-options : 选项，可以调整命令的运行，[ ] 中的内容可以省略，一般命令支持一个或者多个选项。
+- options : 选项，可以调整命令的运行，[ ] 中的内容可以省略，一般命令支持一个或者多个选项。
 
-arguments : 参数，表示命令作用的对象，可以是文件名、用户/组名、IP 等，支持多个参数。
+- arguments : 参数，表示命令作用的对象，可以是文件名、用户/组名、IP 等，支持多个参数。
 
 **作用**：
 
@@ -31,8 +31,6 @@ echo 'Hello World!' // 在屏幕上实现标准输出字符串等信息
 ```
 
 # 一、常用操作以及概念
-
-[**命令大全**]([Linux常用命令(手册)大全 - C语言网](https://www.dotcpp.com/course/linuxcmd/))
 
 ## 快捷键
 
@@ -343,7 +341,7 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 
 使用 `ls` 查看一个文件时，会显示一个文件的信息，例如：
 
-` drwxr-xr-x. 3 root root 17 May 6 00:14 .config `
+> drwxr-xr-x. 3 root root 17 May 6 00:14 .config
 
 - drwxr-xr-x : 文件类型以及权限，第 1 位为文件类型字段，后 9 位为文件权限字段；
 
@@ -367,7 +365,7 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 
 - l : 链接文件。
 
-9 位的文字权限字段中，每 3 个为一组，每一组分别代表对文件拥有者、所属群组以及其他人的文件权限。一组权限中的 3 位分别为 r、w、x 权限，表示可读、可写、可执行。
+> 9 位的文字权限字段中，每 3 个为一组，每一组分别代表对文件拥有者、所属群组以及其他人的文件权限。一组权限中的 3 位分别为 r、w、x 权限，表示可读、可写、可执行。
 
 文件时间有以下三种：
 
@@ -376,8 +374,6 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 - status time（ctime）: 文件的状态（权限、属性）更新就会更新；
 
 - access time（atime）: 读取文件时就会更新。
-
-<<<<<<< HEAD
 
 ## 文件与目录操作
 
@@ -398,17 +394,12 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 - `rm`（remove）: 删除文件或目录
 
 - `mv`（move file）: 移动文件与目录，或修改文件与目录名称
-  =======
-  
-  ## 文件与目录的基本操作
-  
-  > > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
+### 基本操作
 
 ### 1. ls
 
 [列出当前工作文件或者目录的信息，目录的信息就是其中包含的文件]([Linux ls命令:显示指定工作目录下的内容 - Linux命令 - C语言网](https://www.dotcpp.com/course/655))
-
-<<<<<<< HEAD
 
 ```shell
 [root@www ~] ls [-aAdfFhilnrRSt] 目录名称
@@ -422,8 +413,6 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 
 - `-l` ：长数据串列出，包含文件属性与权限等数据。
 
-=======
-
 ```cs
 ## ls [-aAdfFhilnrRSt] file | dir
 -a : 列出全部文件
@@ -431,13 +420,9 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 -l : 以长数据串行列出，包含文件的属性与权限等数据
 ```
 
-> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
-
 ### 2. cd
 
 [更换当前目录]([Linux cd命令:切换工作目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/657))
-
-<<<<<<< HEAD
 
 ```shell
 # 绝对路径
@@ -448,17 +433,11 @@ ext3/ext4 文件系统引入了日志功能，可以利用日志来修复文件�
 [root@www runoob] cd ~
 # 上一级目录
 [root@www ~] cd ..
-=======
-```cs
-cd [相对路径或绝对路径]
->>>>>>> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 ```
 
 ### 3. mkdir
 
 [创建目录]([Linux mkdir命令:创建目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/679))
-
-<<<<<<< HEAD
 
 ```shell
 mkdir [-mp] test1/test2/test3/test4
@@ -493,8 +472,6 @@ mkdir [-mp] test1/test2/test3/test4
 -p : 递归删除目录
 ```
 
-> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
-
 ### 5. touch
 
 [更新文件时间或者建立新文件]([Linux touch命令:修改文件的时间 - Linux命令 - C语言网](https://www.dotcpp.com/course/684))
@@ -511,8 +488,6 @@ mkdir [-mp] test1/test2/test3/test4
 ### 6. cp
 
 [复制文件，若源文件有两个以上，则目的文件一定要是目录才行]([Linux cp命令:复制文件或目录 - Linux命令 - C语言网](https://www.dotcpp.com/course/687))
-
-<<<<<<< HEAD
 
 ```shell
 [root@www ~] cp [-adfilprsu] 来源档(source) 目标档(destination)
@@ -541,10 +516,6 @@ mkdir [-mp] test1/test2/test3/test4
 
 - `-u` ：若 destination 比 source 旧才升级 destination。
 
-```cs
-
-```
-
 ### 7. rm
 
 [删除某个目录及其下的所有文件及子目录，而对于链接文件，只是断开了链接，原文件内容保持不变](https://www.dotcpp.com/course/683)
@@ -556,8 +527,6 @@ rm [-fir] 文件或目录
 - `-f` ：忽略不存在的文件，不会出现警告信息；
 - `-i` ：删除前会询问；
 - `-r` ：递归删除。
-
-=======
 
 ```cs
 ## cp [-adfilprsu] source destination
@@ -579,8 +548,6 @@ rm [-fir] 文件或目录
 ## rm [-fir] 文件或目录
 -r : 递归删除
 ```
-
-> 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 
 ### 8. mv
 
@@ -722,13 +689,9 @@ rm [-fir] 文件或目录
 -n : 打印出行号，连空白行也会有行号，但 -b 不会
 ```
 
-> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
-
 ### 2. tac
 
 是 cat 的反向操作，从最后一行开始打印
-
-<<<<<<< HEAD
 
 ```shell
 [root@www ~] tac /etc/issue
@@ -790,8 +753,6 @@ CentOS release 6.4 (Final)
 
 [查看文件前几行]([Linux head命令:查看文件前几行 - Linux命令 - C语言网](https://www.dotcpp.com/course/693))
 
-> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
-
 ```cs
 ## head [-n number] filename
 -n : 后面接数字，代表显示几行
@@ -799,21 +760,86 @@ CentOS release 6.4 (Final)
 
 ### 6. tail
 
-<<<<<<< HEAD
 [head 的反向操作，查看文件后几行](https://www.dotcpp.com/course/694)
-=======
-[head 的反向操作，查看文件后几行]([Linux tail命令:查看文件后几行 - Linux命令 - C语言网](https://www.dotcpp.com/course/694))
-
-> > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
 
 ### 7. od
 
 以字符或者十六进制的形式显示二进制文件
-<<<<<<< HEAD
 
 - `-n` ：后接数字，代表显示几行；
 
 - `-f` ：表示持续侦测后面所接档名，要等到按下 [ctrl]-c 才结束 tail 侦测。
-  =======
-  
-  > > > > > > > 8ecdf2e35d8794f235f84b4a00f3623796ae7c01
+
+### 8. grep
+
+`grep` 是一个强大的文本搜索工具，它可以在文件中或标准输入中搜索特定的模式，并输出与此模式匹配的行。
+
+以下是 `grep` 的常用选项：
+
+- `-i`：忽略大小写。
+
+- `-r` 或 `-R`：递归搜索子目录中的文件。
+
+- `-v`：显示不匹配的行。
+
+- `-n`：显示匹配行的行号。
+
+- `-w`：只匹配整个单词，而不是其中的部分（例如，匹配 "foo"，但不匹配 "football"）。
+
+- `-c`：显示匹配的行数而不是行内容。
+
+- `-l`：只显示匹配文件的文件名。
+
+以下是 `grep` 的一些用例：
+
+#### 单个文件中搜索
+
+```
+$ grep "pattern" file.txt
+```
+
+#### 多个文件中搜索
+
+```
+$ grep "pattern" file1.txt file2.txt
+```
+
+#### 目录中递归搜索
+
+```
+$ grep -r "pattern" /path/to/dir
+```
+
+#### 显示行号
+
+```
+$ grep -n "pattern" file.txt
+```
+
+上面的命令将在 `file.txt` 文件中搜索 `pattern` 字符串，并显示匹配行的行号。
+
+#### 忽略大小写
+
+```
+$ grep -i "pattern" file.txt
+```
+
+上面的命令将在 `file.txt` 文件中搜索 `pattern` 字符串，忽略大小写。
+
+#### 只显示文件名
+
+```
+$ grep -l "pattern" file1.txt file2.txt
+```
+
+上面的命令将在 `file1.txt` 和 `file2.txt` 文件中搜索 `pattern` 字符串，只显示匹配文件的文件名。
+
+#### 从标准输入读取输入
+
+```
+$ command | grep "pattern"
+```
+
+上面的命令将在 `command` 的输出中搜索 `pattern` 字符串。
+
+`grep` 还支持一些高级的正则表达式功能，例如字符类、括号表达式、量词以及反向引用。可以参考 `grep` 的官方文档或相应的在线教程来深入了解。
