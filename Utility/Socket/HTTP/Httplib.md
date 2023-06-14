@@ -159,7 +159,52 @@ cli.set_ca_cert_path("./ca-bundle.crt");
 cli.enable_server_certificate_verification(false);
 ```
 
-# 示例
+# 响应流程
+
+```cpp
+#include "cpp-httplib"
+void helloworld(Request& req, Response& rsp) {
+    // 1. 业务处理
+    // 2. 填充 rsp 对象，正文（包括类型）、响应状态等
+    rsp.set_content("<html><h1>hello</h1></html>", "text/html");
+    rsp.status = 200;
+}
+
+int main()
+{
+    Server srv;  // 创建服务端对象
+    srv.Get("/",helloworld);
+    srv.listen("0.0.0.0",9000); // 0.0.0.0 本机的任意一块网卡地址， 9000端口
+}
+```
+
+## Get
+
+- Get ( 请求资源路径path, 回调函数指针 )
+
+- 作用：将资源路径以及请求方法还有回调函数，存储在 server 对象中的 map 表中；
+
+- | 资源  | 方法  | 回调函数地址（指针） |
+  | --- | --- | ---------- |
+  | "/" | GET | helloworld |
+
+> 1. Get 先注册对应关系，并记录在 map 中；
+> 
+> 2. 当 listen 开始时，建立服务端；
+> 
+> 3. 收到 http 请求后进行数据包解析，若在 map 中找到请求 path 对应 Get 接口传入的 path 的一个对应关系，则创建线程回调函数完成对请求的业务处理；
+
+## listen
+
+- 搭建 tcp 服务器，监听本机所有网卡 9000 端口，等待客户端传来数据；
+
+- 接收到数据请求，则创建线程进行请求处理；
+  
+  > 1. 按照 http 协议格式解析请求数据，并将解析结果放入到一个实例化的 Request 对象中（方法、路径、查询字符串、头部信息、正文等）；
+  > 
+  > 2. 在 server 对象中的 map 表进行查找对应关系，对应成功则传入回调函数处理请求，处理完毕后填充 response 对象并组织 http 响应返回客户端。
+
+# 应用示例
 
 ## 服务端
 
