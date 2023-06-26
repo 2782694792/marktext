@@ -28,7 +28,7 @@ https://gitcode.net/mirrors/mkulke/ftplibpp
 
 ### 1.2.2 基本模型
 
- ![](https://img-blog.csdnimg.cn/f59f1970e0bf431598e100061ae1afaf.png)![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
+ <img src="https://img-blog.csdnimg.cn/f59f1970e0bf431598e100061ae1afaf.png" title="" alt="" data-align="center">![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
 
 > 客户端有三个构件：用户接口、客户端控制进程、客户端数据传送进程；
 > 
@@ -66,7 +66,7 @@ FTP 支持两种模式：Standard（PORT，主动方式）、Passive（PASV，�
   
   - 传送数据的时候，服务端通过自身的 TCP 20 端口连接客户端指定端口发送数据。
 
-![](https://img-blog.csdnimg.cn/66b9cae70474417a97d0abbdc79de918.png)![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
+<img src="https://img-blog.csdnimg.cn/66b9cae70474417a97d0abbdc79de918.png" title="" alt="" data-align="center">![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
 
 - **被动模式**
   
@@ -74,7 +74,7 @@ FTP 支持两种模式：Standard（PORT，主动方式）、Passive（PASV，�
   
   - 服务端收到 PASV 命令后，打开一个临时端口（1023~65535）并通知客户端在该端口上传送数据。
 
-![](https://img-blog.csdnimg.cn/2497ae2011c540c7802521061efd6185.png)![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
+<img src="https://img-blog.csdnimg.cn/2497ae2011c540c7802521061efd6185.png" title="" alt="" data-align="center">![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
 
 - 使用
 1. PORT：服务端到客户端传送数据；PASV：客户端到服务端传送数据；
@@ -126,7 +126,7 @@ get [文件名称] [-r 文件夹名称]
 mget
 ```
 
-![](https://cdn.nlark.com/yuque/0/2023/png/35714306/1682262230070-4926accf-05e7-4e01-a7ce-8067c7c72d10.png)
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35714306/1682262230070-4926accf-05e7-4e01-a7ce-8067c7c72d10.png" title="" alt="" data-align="center">
 
 # 实现方式
 
@@ -283,17 +283,17 @@ CONFIG += shared
 
 1. 进行编译
 
-![](https://img-blog.csdnimg.cn/560f946df4e54a4b989f9bbb0c458935.png)
+<img src="https://img-blog.csdnimg.cn/560f946df4e54a4b989f9bbb0c458935.png" title="" alt="" data-align="center">
 
 ## 3.2 部署依赖
 
 - 动态库文件 .dll，拷贝至 “E:\Qt\V5.9.3\5.9.3\mingw53_32\bin” 下：
 
-![](https://img-blog.csdnimg.cn/033f6ce43bb949a6ad3917d6c0e55625.png)
+<img src="https://img-blog.csdnimg.cn/033f6ce43bb949a6ad3917d6c0e55625.png" title="" alt="" data-align="center">
 
 - 静态库文件 .a，拷贝至 “E:\Qt\V5.9.3\5.9.3\mingw53_32\lib” 下:
 
-![](https://img-blog.csdnimg.cn/0c408c557e5d4674b5d2abc3afbe0670.png)
+<img src="https://img-blog.csdnimg.cn/0c408c557e5d4674b5d2abc3afbe0670.png" title="" alt="" data-align="center">
 
 - 头文件拷贝至 “E:\Qt\V5.9.3\5.9.3\mingw53_32\include\QtNetwork” 下，同时添加无后缀名文件 QFtp:
 

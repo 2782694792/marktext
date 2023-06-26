@@ -4,7 +4,7 @@
 
 ## 1. 定义
 
-    std::fstream:
+    std::fstream
 
 ```cpp
 template<
