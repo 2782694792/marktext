@@ -1,20 +1,21 @@
 # Vector
 
 - #include<vector>    using namespace std; 
-
 - 矢量容器 ：单向开口的连续内存空间，底层封装：数组；
-
 - 预留内存空间不够时，可以动态扩展（容器满了则新建容器同时进行拷贝）；
-
 - 顺序序列：容器元素按照严格的线性顺序排列；
-
 - 动态数组：支持对序列中任意元素进行快速直接访问，高效的随机访问的容器；
-
 - 越靠后的插入或删除执行效率越高，删除不会释放限制的空间；
-
 - 拥有一段连续的内存空间，支持随机存取，但在中间进行插入和删除会造成内存块的拷贝；
-
 - [Vector 接口函数介绍](https://vimsky.com/examples/usage/cpp_standard_library-cpp_vector_get_allocator-03.html)。
+
+> vector 的基类是三根指针，分别是 start、finish、end_of_storage，用来指示当前分配到的空间所用的起始位置，终止位置和容量尾部；
+>
+> 当 finish 指针到达 end_of_storage 的位置时，操作系统会寻找当前容量大小 2 倍的连续内存空间，并且将旧内存中的数据拷贝到新内存，然后释放旧内存；
+>
+> 如果重新分配了内存，原来的迭代器就会失效；
+> 频繁的开辟新内存比较耗时；
+> 使用 reserve 函数，预先开辟足够大的空间，或者使用 swap 函数收缩内存空间。
 
 <img src="file:///D:/Download/MarkText/workspace/image/2022-09-01-10-59-25-image.png" title="" alt="" data-align="center">
 
