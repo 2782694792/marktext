@@ -71,9 +71,9 @@ int select(int maxfd, fd_set *rdset, fd_set *wrset, fd_set *exset
 
 poll 和 select 原理相似，但差别如下：
 
-- 描述 fd 集合的方式不同，poll 使用 pollfd 结构而不是 select 的 fd_set 结构，所以 poll 是链式的，没有最大连接数的限制；
+- 描述 fd 集合的方式不同，poll 使用 **pollfd 结构**而不是 select 的 fd_set 结构，所以 poll 是**链式**的，**没有最大连接数的限制**；
 
-- poll 属于水平触发，也就是通知程序 fd 就绪后，当前无处理，下次 poll 的时候会再次通知同个 fd 已经就绪。
+- poll 属于**水平触发**，也就是通知程序 fd 就绪后，当前无处理，下次 poll 的时候会**再次通知同个 fd 已经就绪**。
 
 # fd 宏
 
