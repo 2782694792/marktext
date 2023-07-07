@@ -237,10 +237,10 @@
 # Stack
 
 - #include<stack>    using namespace std;
-
-- 栈：LIFO，先进后出；
-
-- 不允许遍历，仅仅一个出口，只有栈顶元素可被访问到。
+- 栈：LIFO，后进先出；FILO，先进后出；
+- 线性表的子集（插入和删除**位置受限的线性表**）；
+- 不允许遍历，**限定仅在一段**，仅仅一个出口，只有栈顶元素可被访问到；
+- 表尾：栈顶 Top，表头：栈底 Base。
 
 <img src="file:///D:/Download/MarkText/workspace/image/2022-09-05-11-20-16-image.png" title="" alt="" data-align="center">
 
@@ -260,15 +260,10 @@
 # Queue
 
 - #include<queue>    using namespace std;
-
 - 队列：FIFO，先进先出；
-
 - 仅仅两个出口，不允许遍历，只能访问容器适配器的第一个和最后一个元素；
-
 - 只能在容器末尾添加元素，只能在容器头部移除元素；
-
 - 和 stack 一样，queue 没有迭代器，不可直接访问所有元素，访问元素唯一的方式就是遍历容器，并移除访问过的每一个元素；
-
 - [queue 的实际使用](http://c.biancheng.net/view/479.html)。
 
 <img src="file:///D:/Download/MarkText/workspace/image/2022-09-07-16-39-50-image.png" title="" alt="" data-align="center">
