@@ -11,7 +11,7 @@
 | Hierarchy | 分类器，层次化的树型结构，用于对被记录信息的分类，层次中每一个节点维护一个logger的所有信息                                       |
 | LogLevel  | 优先权，包括TRACE, DEBUG, INFO,WARNING, ERROR, FATAL。                                        |
 
-    <img src="file:///D:/Download/MarkText/workspace/image/2022-11-29-16-28-31-image.png" title="" alt="" data-align="center">
+    <img src="file:///E:/MarkText/image cache/2022-11-29-16-28-31-image.png" title="" alt="" data-align="center">
 
 主要头文件如下：
 

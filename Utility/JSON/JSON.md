@@ -63,13 +63,13 @@
 
 大括号 { } 保存
 
-<img src="file:///D:/Download/MarkText/workspace/image/2022-12-08-20-54-31-image.png" title="" alt="" data-align="center">
+<img src="file:///E:/MarkText/image cache/2022-12-08-20-54-31-image.png" title="" alt="" data-align="center">
 
 ## 数组
 
 中括号 [ ] 保存
 
-<img src="file:///D:/Download/MarkText/workspace/image/2022-12-08-20-55-10-image.png" title="" alt="" data-align="center">
+<img src="file:///E:/MarkText/image cache/2022-12-08-20-55-10-image.png" title="" alt="" data-align="center">
 
 ## 值
 
@@ -82,7 +82,7 @@
 - 对象（在大括号中）；
 - null。
 
-<img src="file:///D:/Download/MarkText/workspace/image/2022-12-08-20-56-38-image.png" title="" alt="" data-align="center">
+<img src="file:///E:/MarkText/image cache/2022-12-08-20-56-38-image.png" title="" alt="" data-align="center">
 
 # Demo 解析
 

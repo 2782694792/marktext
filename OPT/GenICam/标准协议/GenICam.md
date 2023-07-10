@@ -6,7 +6,7 @@ GenICam 是一个全球标准协议，**定义了用于计算机控制数码相�
 
 - GenICam 接口已被纳入一系列高速视频标准，包括 GigE Vision、USB3 Vision 和 Camera Link，为之提供了一个端到端配置接口。
 
-<img src="file:///D:/Download/MarkText/workspace/image/2022-09-17-10-32-48-image.png" title="" alt="" data-align="center">
+<img src="file:///E:/MarkText/image cache/2022-09-17-10-32-48-image.png" title="" alt="" data-align="center">
 
 ## 2、优势
 
@@ -44,6 +44,6 @@ GenICam 标准由 4 个模块组成：
 
 GenICam 标准的核心是一个在 XML 描述符文件里对相机属性进行的描述。使用此文件时，从 XML 到 C++ 的翻译程序会直接生成被称为 GenAPI 的应用编程接口或图形用户界面（GUI）的元素。
 
-<img src="file:///D:/Download/MarkText/workspace/image/2022-09-17-11-27-14-image.png" title="" alt="" data-align="center">
+<img src="file:///E:/MarkText/image cache/2022-09-17-11-27-14-image.png" title="" alt="" data-align="center">
 
 # 
