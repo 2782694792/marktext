@@ -43,4 +43,46 @@ find /var/log -name "*.log" ! -name "error.log"
 
    缺点：加载速度偏慢，**发布程序时，需要提供**动态库。
 
-​	
+## 查询文件内容 grep
+
+搜索某个文件里面是否包含字符串
+
+```sh
+# 单（多）个文件
+grep "search-content" filename (filename1 filename2.... filenamen)
+
+# 转义字符 \
+grep "\\总数：900\\" *.out
+
+# 选项：
+# -n : 显示搜索文本在文件中的行数
+# -i ：搜索忽略大小写
+# -v ：查找不匹配指定字符串的行
+# -c ：显示匹配的总行数
+# -w ：完全匹配
+```
+
+## 软硬链接 ln
+
+- **硬连接**指通过**索引节点**来进行连接；
+- **符号连接**（Symbolic Link），也叫软连接。类似于 Windows 的**快捷方式**。
+
+> 应用场景：如，串口转换连接，USB 转串口可以链接成特定链接名称。
+
+```sh
+# 创建f1的一个硬连接文件f2
+ln f1 f2
+
+# 创建 f1 的一个符号连接文件 f3
+ln -s f1 f3
+
+# -i 参数显示文件的 inode 节点信息
+ls -li
+
+# ================
+total 0
+9797648 -rw-r--r-- 2 root root 0 Apr 21 08:11 f1
+9797648 -rw-r--r-- 2 root root 0 Apr 21 08:11 f2
+9797649 lrwxrwxrwx 1 root root 2 Apr 21 08:11 f3 -> f1
+```
+
