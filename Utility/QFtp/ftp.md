@@ -50,11 +50,11 @@ https://gitcode.net/mirrors/mkulke/ftplibpp
 
 - `ASCII 传输方式`
 
-    当用户正在拷贝的文件包含简单的 ASCII 码文本，且远程服务器上运行的不是 UNIX，则文件传输时通常会自动调整文件内容以便于解析成其他计算机存储文件的格式。
+    当用户正在拷贝的文件包含简单的 ASCII 码文本，且远程服务器上运行的不是 UNIX，则文件传输时通常会==自动调整文件内容==以便于解析成其他计算机存储文件的格式。
 
 - `二进制传输方式`
 
-    保存文件的位序，以便原始和拷贝的是逐位一一对应的（ASCII 方式一般假设每一字符的第一有效位无意义，而二进制文件传输时所有位都是重要的）。
+    保存文件的位序，以便原始和拷贝的是==逐位一一对应==的（ASCII 方式一般假设每一字符的==第一有效位无意义==，而二进制文件传输时所有位都是重要的）。
 
 ### 1.3.3 传输模式
 
@@ -69,7 +69,6 @@ FTP 支持两种模式：Standard（PORT，主动方式）、Passive（PASV，�
 <img src="https://img-blog.csdnimg.cn/66b9cae70474417a97d0abbdc79de918.png" title="" alt="" data-align="center">![](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw== "点击并拖拽以移动")​
 
 - **被动模式**
-  
   - 建立控制通道和 Standard 模式类似，但建立连接后发送 PASV 命令；
   
   - 服务端收到 PASV 命令后，打开一个临时端口（1023~65535）并通知客户端在该端口上传送数据。
@@ -418,13 +417,13 @@ void MainWnd::addToList(const QUrlInfo url)
 ```
 
 > 目录列表刷新信号：
-> 
-> connect(&d->pi.dtp, SIGNAL(listInfo(QUrlInfo))         ,SIGNAL(listInfo(QUrlInfo)));
-> 
+>
+> ​	connect(&d->pi.dtp, SIGNAL(listInfo(QUrlInfo)),SIGNAL(listInfo(QUrlInfo)));
+>
 > 自定义槽函数实现：
-> 
-> connect(ftp, SIGNAL(listInfo(const QUrlInfo &)),this         , SLOT(addToList(const QUrlInfo)));
-> 
+>
+> ​	connect(ftp, SIGNAL(listInfo(const QUrlInfo &)),this, SLOT(addToList(const QUrlInfo)));
+>
 > // QUrlInfo 包含文件、文件夹的各个信息，以此实现刷新读取文件列表
 
 - 传输进度条
