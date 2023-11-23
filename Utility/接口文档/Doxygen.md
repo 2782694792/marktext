@@ -21,13 +21,13 @@ Doxygen 是一个程序的文件产生工具，按照其制定的规则编写程
 
 ### 2.1 wizard 标签
 
-<img src="E:\marktext\image cache\Doxygen_wizard_project.png" style="zoom:80%;" />
+<img src="../..\image cache\Doxygen_wizard_project.png" style="zoom:80%;" />
 
-<img src="E:\marktext\image cache\Doxygen_wizard_mode.png" style="zoom:80%;" />
+<img src="../..\image cache\Doxygen_wizard_mode.png" style="zoom:80%;" />
 
-<img src="E:\marktext\image cache\Doxygen_wizard_output.png" style="zoom:80%;" />
+<img src="../..\image cache\Doxygen_wizard_output.png" style="zoom:80%;" />
 
-<img src="E:\marktext\image cache\Doxygen_wizard_Diagrams.png" style="zoom:80%;" />
+<img src="../..\image cache\Doxygen_wizard_Diagrams.png" style="zoom:80%;" />
 
 ### 2.2 expert 标签
 

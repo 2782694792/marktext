@@ -34,7 +34,7 @@
 
 ## 文件目录
 
-<img src="file:///E:/MarkText/image%20cache/httplib%20文件目录.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/httplib%20文件目录.png" title="" alt="" data-align="center">
 
 - httplib.h：库的头文件；
 

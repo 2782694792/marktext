@@ -4,6 +4,10 @@
 
 > 对文本资料进行扫描，然后对图像文件进行图像处理和分析，最终获取文字的过程。
 
+![](../image cache/Halcon_OCR_示例0.png)
+
+![](../image cache/Halcon_OCR_示例01.png)
+
 # 示例
 
 ```cpp

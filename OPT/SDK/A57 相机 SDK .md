@@ -50,11 +50,11 @@
 
 1. 拷贝头文件
    
-   <img title="" src="file:///E:/MarkText/image cache/2022-09-22-19-01-51-image.png" alt="" data-align="center">
+   <img title="" src="../../image cache/2022-09-22-19-01-51-image.png" alt="" data-align="center">
 
 2. 拷贝 Lib 库
    
-   <img src="file:///E:/MarkText/image cache/2022-09-22-09-06-37-image.png" title="" alt="" data-align="center">
+   <img src="../../image cache/2022-09-22-09-06-37-image.png" title="" alt="" data-align="center">
 
 3. 拷贝运行时动态库
    
@@ -64,17 +64,17 @@
 
 1. 配置头文件
    
-   <img title="" src="file:///E:/MarkText/image cache/2022-09-22-18-58-20-image.png" alt="" data-align="center">
+   <img title="" src="../../image cache/2022-09-22-18-58-20-image.png" alt="" data-align="center">
 
 2. 配置 Lib 库
 
-<img src="file:///E:/MarkText/image cache/2022-09-22-19-13-14-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-09-22-19-13-14-image.png" title="" alt="" data-align="center">
 
 ![](D:\Download\MarkText\workspace\image\2022-10-08-11-42-41-image.png)
 
 # 2、SDK 整体调用流程
 
-<img title="" src="file:///E:/MarkText/image cache/2022-09-22-19-42-41-image.png" alt="" data-align="center">
+<img title="" src="../../image cache/2022-09-22-19-42-41-image.png" alt="" data-align="center">
 
 # 3、SDK 各功能接口调用说明
 
@@ -191,7 +191,7 @@ SDK 提供了 2 种方式读写属性：
 
     打开相机客户端，找到要对应的属性，查看该属性属于哪一个属性类别，如获取像素高度信息，找到 Height 属性，属于 ImageFormatControl ，则要创建 ImageFormatControl 节点。
 
-<img src="file:///E:/MarkText/image cache/2022-09-23-11-28-31-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-09-23-11-28-31-image.png" title="" alt="" data-align="center">
 
 （2）示例：
 
@@ -262,7 +262,7 @@ intNode.release(&intNode);
 
 打开相机客户端，找到指定属性并选中，在属性列表下方会展示对应的相关信息，选中 Height 属性，Type 为 Integer。
 
-<img src="file:///E:/MarkText/image cache/2022-09-23-14-04-23-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-09-23-14-04-23-image.png" title="" alt="" data-align="center">
 
 #### （1）整形属性
 
@@ -865,7 +865,7 @@ if (0 != pEventSubscribe->unsubscribeStreamArgEx(
 
 相机提供了一些内部消息事件，例如曝光结束、帧开始等事件通知。使用相机消息事件之前，需要将对应的相机事件开关设置为 On。例如要获取相机曝光结束的事件通知，则设置 EventSelector为 ExposureEnd，并设置 EventNotification 为 On，如下图：
 
-<img src="file:///E:/MarkText/image cache/2022-09-30-16-24-58-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-09-30-16-24-58-image.png" title="" alt="" data-align="center">
 
 （1）消息通道事件回调定义
 

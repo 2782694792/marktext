@@ -48,7 +48,7 @@ poll 和 select 原理相似，但差别如下：
 
 - recvfrom 只有等到 kernel 中的数据复制到用户进程缓冲区之后才返回并解除阻塞。
 
-<img title="" src="file:///E:/MarkText/image cache/阻塞IO模型.png" alt="" data-align="center">
+<img title="" src="../../../image cache/阻塞IO模型.png" alt="" data-align="center">
 
 ### 非阻塞 I/O 模型
 
@@ -58,7 +58,7 @@ poll 和 select 原理相似，但差别如下：
 
 - **第一阶段非阻塞，第二阶段必须阻塞**。
 
-<img title="" src="file:///E:/MarkText/image cache/非阻塞IO模型.png" alt="" data-align="center">
+<img title="" src="../../../image cache/非阻塞IO模型.png" alt="" data-align="center">
 
 ### I/O 多路复用模型
 
@@ -70,7 +70,7 @@ poll 和 select 原理相似，但差别如下：
 
 - select被调用后，进程会被阻塞，内核监视所有 select 负责的 socket，**当至少有一个 socket的数据准备好（I/O 可用）时，返回可读**，由 recvfrom 处理数据。
 
-<img title="" src="file:///E:/MarkText/image cache/多路复用IO模型.png" alt="" data-align="center">
+<img title="" src="../../../image cache/多路复用IO模型.png" alt="" data-align="center">
 
 ### 信号驱动 I/O 模型（SIGIO）
 
@@ -84,7 +84,7 @@ poll 和 select 原理相似，但差别如下：
 
 - 优势在于等待数据报到达**第一阶段期间，进程可以继续执行，不被阻塞**。免去了 select 的阻塞与轮询，当有活跃套接字时，由注册的 handler 处理；
 
-<img title="" src="file:///E:/MarkText/image cache/信号驱动IO模型.png" alt="" data-align="center">
+<img title="" src="../../../image cache/信号驱动IO模型.png" alt="" data-align="center">
 
 ### 异步 I/O 模型（AIO）
 
@@ -98,4 +98,4 @@ poll 和 select 原理相似，但差别如下：
 1. 优点：整个过程都不阻塞，一步到位；非常使用高并发应用；
 2. 缺点：模型复杂，实现、开发难度较大。
 
-<img title="" src="file:///E:/MarkText/image cache/异步IO模型.png" alt="" data-align="center">
+<img title="" src="../../../image cache/异步IO模型.png" alt="" data-align="center">

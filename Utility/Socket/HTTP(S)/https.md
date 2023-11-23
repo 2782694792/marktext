@@ -37,13 +37,13 @@
 
 ## 非对称公开加密
 
-![](E:\MarkText\image cache\非对称公开加密.png)
+![](../../..\image cache\非对称公开加密.png)
 
 ## CA 证书签发
 
 CA (Certificate Authority，证书授权)是由认证机构服务者签发。
 
-![](E:\MarkText\image cache\CA 验证签发.png)
+![](../../..\image cache\CA 验证签发.png)
 
 ## 握手过程
 

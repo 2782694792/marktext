@@ -26,8 +26,6 @@
 
     一个快速的 C++ 日志库，只包含头文件，兼容 C++11。
 
-- ……
-
 # 二、下载
 
 ## 2.1 网址
@@ -62,31 +60,31 @@
 
     打开Visual Studio，进入 log4cplus-2.0.8\msvc10目录下，运行log4cplus.sln解决方案。
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-16-59-29-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-16-59-29-image.png" title="" alt="" data-align="center">
 
 ## 3.2 项目配置
 
     选择 log4cplus 项目，右键——>属性——>配置属性——>常规——>字符集，选择 Unicode 字符集，如下图所示。
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-17-00-07-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-17-00-07-image.png" title="" alt="" data-align="center">
 
     编译完成后，会在 log4cplus-2.0.8\msvc10\x64\bin.Release 文件夹下生成我们需要的 log4cplus.lib 和 log4cplus.dll 两个文件（release 版），如下图所示。生成的文件放到我们的项目文件夹下（版本号_编译环境 系统位数）或者记住文件位置，方便项目属性进行配置。
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-17-00-42-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-17-00-42-image.png" title="" alt="" data-align="center">
 
 ## 3.3 目标程序配置
 
     将 log4cplus-2.0.8 目录下的 include 文件夹同样也是放入到我们的目标程序所创建的文件夹当中，如下，在项目属性设置该头文件包含目录：
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-16-58-27-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-16-58-27-image.png" title="" alt="" data-align="center">
 
-![](E:\MarkText\image cache\2022-11-28-16-56-24-image.png)
+![](../..\image cache\2022-11-28-16-56-24-image.png)
 
     设置 lib 文件的库目录以及将 lib 文件填入附加依赖项，如下：
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-16-57-02-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-16-57-02-image.png" title="" alt="" data-align="center">
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-16-55-18-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-16-55-18-image.png" title="" alt="" data-align="center">
 
 或者进行头文件添加 lib 附加依赖项：
 
@@ -96,7 +94,7 @@
 
 生成的 dll 文件需放在项目同路径下：
 
-<img src="file:///E:/MarkText/image cache/2022-11-28-16-54-43-image.png" title="" alt="" data-align="center">
+<img src="../../image cache/2022-11-28-16-54-43-image.png" title="" alt="" data-align="center">
 
 # 四、配置文件
 

@@ -14,7 +14,7 @@
   
   给相机添加新的属性仅仅意味着扩展相机的描述文件，就可对所有符号 GenICam 标准的程序立即生效。
 
-<img src="file:///E:/MarkText/image cache/2022-09-28-15-56-28-image.png" title="" alt="" data-align="center">
+<img src="../../../image cache/2022-09-28-15-56-28-image.png" title="" alt="" data-align="center">
 
 ## 2.2 节点、接口和抽象特征
 
@@ -70,7 +70,7 @@ Integer
 
 > 假定相机3个寄存器，一个是 Gain 的 Value，另两个是 Min 和 Max。利用 IntReg 节点可以从每个寄存器取出相应值。Gain 的 Integer 节点收集并合并这些数据，再通过 IInteger 接口把结果传递出来。
 
-<img src="file:///E:/MarkText/image cache/2022-09-30-09-51-39-image.png" title="" alt="" data-align="center">
+<img src="../../../image cache/2022-09-30-09-51-39-image.png" title="" alt="" data-align="center">
 
 > 若获取 Gain 节点的值，调用会被分派到 GainValue 节点，再由 GainValue 通过 IPort 向 Device 节点查询正确的寄存器；若试图进行设置，则程序会先从 GainMin 和 GainMax 读出范围，若输入值符合，则 Gain 会通过 GainValue 和 Device 节点写入相机。
 
@@ -102,7 +102,7 @@ Integer
 > 
 >     硬件 Trigger 的值可以为 On 或 Off 。如果是 On，另外一个属性 TriggerPolarity 变可用，TriggerPolarity 属性指示硬件信号是 ActiveHigh 还是ActiveLow。如果 Trigger 是 Off，则 TriggerPolarity 属性无意义，被置为灰色。
 
-<img title="" src="file:///E:/MarkText/image cache/2022-09-30-10-44-21-image.png" alt="" data-align="center">
+<img title="" src="../../../image cache/2022-09-30-10-44-21-image.png" alt="" data-align="center">
 
     pIsAvailable 可直接指向 TriggerReg ，因为 Trigger = On 被映射为 1，Trigger = Off 被映射为 0。否则一个类型为 IntSwissKnife 的节点，它可以根据数学公式计算其他整数节点的值，并得到一个整数的结果。在 XML 文件中如下：
 
@@ -126,7 +126,7 @@ Integer
 
 `来控制 BytesPerPacket 的锁定状态。`
 
-<img src="file:///E:/MarkText/image cache/2022-09-30-11-18-44-image.png" title="" alt="" data-align="center">
+<img src="../../../image cache/2022-09-30-11-18-44-image.png" title="" alt="" data-align="center">
 
 GenApi 内的解决方案是提供一个浮动的 Boolean 型节点 TLParamsLocked 。
 
@@ -140,4 +140,4 @@ GenApi 内的解决方案是提供一个浮动的 Boolean 型节点 TLParamsLock
 
 > Gamma 节点有一个 pIsImplemented 的连接指向 GammaInq 节点，GammaInq 节点映射相机查询位。通常把多个查询位合并到一个寄存器里。为取得这些位，要使用 MaskedIntReg 节点类型。像 IntReg 节点，但是可以像查询整数一样取查询一个或一组连续位。
 
-<img src="file:///E:/MarkText/image cache/2022-09-30-11-41-52-image.png" title="" alt="" data-align="center">
+<img src="../../../image cache/2022-09-30-11-41-52-image.png" title="" alt="" data-align="center">

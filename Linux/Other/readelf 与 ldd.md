@@ -21,7 +21,7 @@
      > 1. 入口地址指向了程序的确定代码，负责初始化运行环境、全局变量等之后，最终跳转到 main 函数或其他程序的主要逻辑部分；
      > 2. 通过入口地址，操作系统将处理器的指令指针设置为该地址，处理器便会从此处开始执行；
    
-   ![image-20230919084835094](E:\marktext\image cache\readelf_out)
+   ![image-20230919084835094](../..\image cache\readelf_out)
    
    
    
@@ -38,7 +38,7 @@
    
    
    
-   ![image-20230919200529482](E:\marktext\image cache\readelf_o.png)
+   ![image-20230919200529482](../..\image cache\readelf_o.png)
    
    
    
@@ -54,7 +54,7 @@
    
      关键字：**-d**  **共享目标文件**  **动态段**   **标签指明依赖关系、重定位、符号解析等**
 
-![](E:\marktext\image cache\readelf_so.png)
+![](../..\image cache\readelf_so.png)
 
 ## ldd
 
@@ -65,7 +65,7 @@
 
 > 关键字：**依赖库  依赖关系 依赖名称与路径  版本信息** 
 
-![](E:\marktext\image cache\linux-ldd.png)
+![](../..\image cache\linux-ldd.png)
 
 ## 附1
 

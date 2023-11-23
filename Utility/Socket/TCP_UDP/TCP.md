@@ -12,19 +12,19 @@
 
 TCP/IP是基于 TCP 和 IP 这两个最初的协议之上的不同的通信协议的大集合；
 
-<img src="file:///E:/MarkText/image%20cache/TCPIP%20协议族.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/TCPIP%20协议族.png" title="" alt="" data-align="center">
 
 ## 1.2 协议的分层
 
-<img src="file:///E:/MarkText/image%20cache/协议的分层.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/协议的分层.png" title="" alt="" data-align="center">
 
 ## 1.3 分层的作用
 
-<img src="file:///E:/MarkText/image%20cache/协议分层的作用.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/协议分层的作用.png" title="" alt="" data-align="center">
 
 ## 1.4 OSI 7层模型通讯
 
-<img src="file:///E:/MarkText/image%20cache/OSI%207层模型通讯.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/OSI%207层模型通讯.png" title="" alt="" data-align="center">
 
 # TCP 通讯
 
@@ -38,7 +38,7 @@ TCP/IP是基于 TCP 和 IP 这两个最初的协议之上的不同的通信协�
 
 4. 服务器和客户端之间通过它们各自的套接字进行通信，发送和接收数据，直到一方关闭连接。
 
-<img src="file:///E:/MarkText/image%20cache/tcp%20通讯.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/tcp%20通讯.png" title="" alt="" data-align="center">
 
 ## 2.2 报文、帧、数据包
 
@@ -58,11 +58,11 @@ TCP/IP是基于 TCP 和 IP 这两个最初的协议之上的不同的通信协�
 
 ### 2.2.1 tcp 报文
 
-<img src="file:///E:/MarkText/image%20cache/TCP%20报文.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/TCP%20报文.png" title="" alt="" data-align="center">
 
 ### 2.2.2 IP 数据包
 
-<img src="file:///E:/MarkText/image%20cache/IP%20数据包.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/IP%20数据包.png" title="" alt="" data-align="center">
 
 #### 序号 Sequence Number
 
@@ -141,8 +141,8 @@ FIN = 1 时，表示此报文段的发送方的数据已经**发送完毕**，�
 
 ### 三次建立连接
 
-<img title="" src="file:///E:/MarkText/image%20cache/三次握手.png" alt="" data-align="center">
+<img title="" src="../../../image%20cache/三次握手.png" alt="" data-align="center">
 
 ### 四次释放连接
 
-<img src="file:///E:/MarkText/image%20cache/四次挥手.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/四次挥手.png" title="" alt="" data-align="center">

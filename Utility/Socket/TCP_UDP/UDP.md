@@ -16,7 +16,7 @@
 
 UDP 是 `面向报文` 的，发送方的 UDP 对应用程序交下来的报文，在添加首部后就向下交付 IP 层。UDP 对应用层交下来的报文，不合并，不拆分，仅仅 `保留这些报文的边界` 。
 
-<img src="file:///E:/MarkText/image%20cache/UDP%20面向报文.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/UDP%20面向报文.png" title="" alt="" data-align="center">
 
 ## 特点
 
@@ -40,13 +40,13 @@ UDP 是 `面向报文` 的，发送方的 UDP 对应用程序交下来的报文�
 
 - `检验和`：检测 UDP 用户数据报在传输中是否有错。有错就丢弃。
 
-<img src="file:///E:/MarkText/image%20cache/UDP%20用户数据报.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/UDP%20用户数据报.png" title="" alt="" data-align="center">
 
 ### 2. 端口分用
 
 当运输层从 **IP 层收到** UDP 数据报时，就根据首部中的目的端口，把 UDP 数据报通过相应的端口，**上交**最后的终点——**应用进程**。
 
-<img src="file:///E:/MarkText/image%20cache/UDP%20端口分用.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/UDP%20端口分用.png" title="" alt="" data-align="center">
 
 如果**接受方 UDP** **发现**收到的报文中的**目的端口号不正确**(即不存在对应于该端口号的应用程序)，**就丢弃**该报文，并由网际控制报文协议 ICMP **发送”端口不可达“差错报文**给发送方。
 
@@ -74,7 +74,7 @@ UDP 是 `面向报文` 的，发送方的 UDP 对应用程序交下来的报文�
   
   - 如果该端口上没有程序正在接收数据包，则服务器将以 ICMP (ping) 数据包作为响应，以告知发送方目标不可达。
 
-<img src="file:///E:/MarkText/image%20cache/UDP%20洪水攻击.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/UDP%20洪水攻击.png" title="" alt="" data-align="center">
 
 ### 防止攻击
 
@@ -90,7 +90,7 @@ UDP 是 `面向报文` 的，发送方的 UDP 对应用程序交下来的报文�
 
 # UDP 通讯流程
 
-<img src="file:///E:/MarkText/image%20cache/UDP%20通信流程图.png" title="" alt="" data-align="center">
+<img src="../../../image%20cache/UDP%20通信流程图.png" title="" alt="" data-align="center">
 
 ## 服务端设计
 

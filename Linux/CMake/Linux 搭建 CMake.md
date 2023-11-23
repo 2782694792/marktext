@@ -183,16 +183,12 @@ CMake 始于 1999 年，当时开发公司 Kitware 被委托设计一套工具�
 CMake 本身是一个**工具集**，由五个可执行的程序组成：**cmake、ctest、cpack、cmake-gui、ccmake**。
 
 - **cmake**：用于在构建项目的第一步，进行项目的**配置、生成和构建项目**的主要可执行文件的工作；
-
 - **ctest**：定义测试、测试套件，并设置应该如何执行，用于运行和报告测试结果的**测试驱动程序**；
-
 - **cpack**：为打包需求提供了 DSL，用来生成安装程序和源包的**打包程序**；
-
 - **cmake-gui**：cmake 的**图形界面**；
-
 - **ccmake**：用于图形界面，与 cmake-gui 不同的地方在于ccmake是基**于控制台（terminal）的图形界面**。
 
-<img src="https://cdn.nlark.com/yuque/0/2023/png/35714306/1681969888445-2bc82a29-ba07-4185-829c-b4595b4c2702.png" title="" alt="" data-align="center">
+![](../../image cache/cmake 编译构造.png)
 
 > **CDash** 将项目的测试结果在面板中展示。
 
@@ -212,13 +208,7 @@ CMake 本身是一个**工具集**，由五个可执行的程序组成：**cmake
 
 - **Package install time**，在系统范围内安装新生成的包。
 
-## 4.2 构建树
-
-构建的每一个目标，都是树形的结构。
-
-<img src="https://cdn.nlark.com/yuque/0/2023/png/35714306/1681983213948-999ca21a-56ea-4f1a-8412-9a41db3a1b30.png" title="" alt="" data-align="center">
-
-## 4.3 常用命令
+## 4.2 常用命令
 
 - **cmake_minimum_required** **- 指定CMake的最小版本要求**
 
@@ -287,14 +277,12 @@ add_compile_options(-Wall -std=c++11 -O2)
 > 语法： aux_source_directory(dir VARIABLE)
 
 - **target_include_directories( swap_lib PUBLIC ${PROJECT_SOURCE_DIR}/include ) - 链接静态库目录**
-  
-  ## 4.4 构建流程
+
+## 4.3 构建流程
+
 1. 建立 build 文件夹，并进入 build 目录：**mkdir build & cd build**
-
 2. 编译上级目录的 CMakeLists.txt 文件，生成 Makefile 和 其他文件：**cmake ..**
-
 3. 执行 make 命令，生成目标：**make**
-
 4. 流程图如下，包括**三个基本阶段：配置、生成、构建阶段**：
 
-<img src="https://cdn.nlark.com/yuque/0/2023/png/35714306/1682043301512-66308ba6-0a9e-4515-9418-2995b42cdf56.png#averageHue=%23f4f4f4&clientId=u20790f9c-7a68-4&from=ui&id=u5485e477&name=cmake%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png&originHeight=385&originWidth=735&originalType=binary&ratio=1.75&rotation=0&showTitle=false&size=35505&status=done&style=none&taskId=ud6914b61-5a4c-429b-8488-c628545cf24&title=" title="" alt="cmake 工作流程.png" data-align="center">
+![](../../image cache/cmake 工作流程.png)

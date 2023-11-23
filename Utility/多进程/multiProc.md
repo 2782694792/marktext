@@ -420,7 +420,7 @@ exec 后新进程保持原进程以下特征：
 
 5. 使用 execle、execve 时新进程不继承任何 Shell 进程的环境变量，而由 envp[ ] 数组自行设置环境变量。
 
-<img title="" src="file:///E:/MarkText/image cache/2023-04-28-19-36-13-image.png" alt="" data-align="center">
+<img title="" src="../../image cache/2023-04-28-19-36-13-image.png" alt="" data-align="center">
 
 ```cpp
 execl("/bin/ls", "ls", "-l", (char *)0);

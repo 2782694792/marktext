@@ -124,7 +124,7 @@ FD_ISSET(int fd,fd_set *fdset)
 5. 反复执行以上步骤。
 - 图示：
 
-![](E:\MarkText\image%20cache\select.png)
+![](../../..\image%20cache\select.png)
 
 # 模型理解与示例
 

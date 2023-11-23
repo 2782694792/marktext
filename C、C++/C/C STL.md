@@ -99,7 +99,7 @@ void assert(int expression)
 
 - 一个浮点数的值如下：
 
-![](D:\Download\MarkText\workspace\image\2022-10-22-16-42-30-image.png)
+![](../../image cache/\2022-10-22-16-42-30-image.png)
 
 ## 库宏
 

@@ -27,7 +27,7 @@
 - operator new / delete 的实现可以基于 malloc；
 - delete [ ] 释放数组分配的内存；
 
-![](E:\marktext\image cache\构造与析构.png)
+![](../..\image cache\构造与析构.png)
 
 ### 2.2 内存泄漏
 
